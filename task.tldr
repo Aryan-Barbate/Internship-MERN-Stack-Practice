@@ -43,8 +43,8 @@
 			"typeName": "pointer"
 		},
 		{
-			"x": 0,
-			"y": 0,
+			"x": 189.8000030517578,
+			"y": 42.89998245239258,
 			"z": 1,
 			"meta": {},
 			"id": "camera:page:page",
@@ -53,10 +53,8 @@
 		{
 			"editingShapeId": null,
 			"croppingShapeId": null,
-			"selectedShapeIds": [
-				"shape:2XZBqXYHsf973sSwQ56IU"
-			],
-			"hoveredShapeId": "shape:2XZBqXYHsf973sSwQ56IU",
+			"selectedShapeIds": [],
+			"hoveredShapeId": null,
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -72,84 +70,6 @@
 			"meta": {},
 			"id": "user:dTYdUoQaSM6-R6dB8o5_s",
 			"typeName": "user"
-		},
-		{
-			"x": 184,
-			"y": 278.20002365112305,
-			"rotation": 0,
-			"isLocked": false,
-			"opacity": 1,
-			"meta": {},
-			"id": "shape:2XZBqXYHsf973sSwQ56IU",
-			"type": "text",
-			"props": {
-				"color": "black",
-				"size": "m",
-				"w": 736.3375244140625,
-				"font": "draw",
-				"textAlign": "start",
-				"autoSize": true,
-				"scale": 1,
-				"richText": {
-					"type": "doc",
-					"attrs": {
-						"dir": "auto"
-					},
-					"content": [
-						{
-							"type": "paragraph",
-							"attrs": {
-								"dir": "auto"
-							},
-							"content": [
-								{
-									"type": "text",
-									"text": "wap to print max between 2 number"
-								}
-							]
-						},
-						{
-							"type": "paragraph",
-							"attrs": {
-								"dir": "auto"
-							},
-							"content": [
-								{
-									"type": "text",
-									"text": "wap to print max between 3 numbers"
-								}
-							]
-						},
-						{
-							"type": "paragraph",
-							"attrs": {
-								"dir": "auto"
-							},
-							"content": [
-								{
-									"type": "text",
-									"text": "wap to print mid between 3 number"
-								}
-							]
-						},
-						{
-							"type": "paragraph",
-							"attrs": {
-								"dir": "auto"
-							},
-							"content": [
-								{
-									"type": "text",
-									"text": "wap to print even and odd using ternary and using prompt"
-								}
-							]
-						}
-					]
-				}
-			},
-			"parentId": "page:page",
-			"index": "a1s5TunV",
-			"typeName": "shape"
 		},
 		{
 			"meta": {},
@@ -183,7 +103,7 @@
 				"x": 0,
 				"y": 0,
 				"w": 1318.4000244140625,
-				"h": 702.4000244140625
+				"h": 501.6000061035156
 			},
 			"insets": [
 				false,
@@ -200,7 +120,7 @@
 			"isFocused": true,
 			"devicePixelRatio": 1.25,
 			"isCoarsePointer": false,
-			"isHoveringCanvas": true,
+			"isHoveringCanvas": false,
 			"openMenus": [],
 			"isChangingStyle": false,
 			"isReadonly": false,

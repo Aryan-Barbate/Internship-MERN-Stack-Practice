@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var password = prompt("Enter password");
+
+        var MinLength = password.length >= 8;
+        var UpperCase = /[A-Z]/.test(password);
+        var Digit = /[0-9]/.test(password);
+        var SpecialChar = /[#@$%]/.test(password);
+
+        var missing = "";
+
+        if(!MinLength){
+            missing += "Minimum 8 character length\n";
+        }
+        if(!UpperCase){
+            missing += "Upper case character missing\n";
+        }
+        if(!Digit){
+            missing += "Digit missing\n";
+        }
+        if(!SpecialChar){
+            missing += "Special character missing\n";
+        }
+
+        if(MinLength&&UpperCase&&Digit&&SpecialChar){
+            console.log("Valid Password : ",password);
+        } else {
+            console.log("Invalid Password : ",password);
+            console.log("Missing:\n" + missing);
+            
+        }
+    </script>
+</body>
+</html>
