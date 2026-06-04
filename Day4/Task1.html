@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Billing</title>
+    </head>
+    <body>
+        <script>
+            var bill = Number(prompt("Enter the bill"));
+
+            var discount;
+
+            if (bill > 5000) {
+                discount = bill * 0.2;
+                console.log("20% discount applied");
+            } else if (bill > 3000) {
+                discount = bill * 0.1;
+                console.log("10% discount applied");
+            } else if (bill > 1000) {
+                discount = bill * 0.05;
+                console.log("5% discount applied");
+            } else {
+                    discount = 0;
+                console.log("No discount applied");
+            }
+
+            bill = bill - discount;
+            document.write("Bill after discount = ",bill);
+            console.log("Bill after discount = ",bill);
+            
+
+        </script>
+    </body>
+</html>
