@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+</head>
+<body>
+    <script>
+        var a = Number(prompt("Enter 1st number"))
+        var b = Number(prompt("Enter 2nd number"))
+
+        var ch = Number(prompt("------Operations-----\n1.Addition\n2.Subtraction\n3.Multiplication\n4.Division"))
+
+        switch(ch){
+            case 1: document.write("<h1>Addition is : "+(a+b)+"</h1>")
+                break;
+            case 2: document.write("<h1>Subtraction is : "+(a-b)+"</h1>")
+                break;
+            case 3: document.write("<h1>Multiplication is : "+(a*b)+"</h1>")
+                break;
+            case 4: document.write("<h1>Division is : "+(a/b)+"</h1>")
+                break;
+            default:
+                document.write("<h1>Invalid Choice</h1>")
+        }
+</script>
+</body>
+</html>
