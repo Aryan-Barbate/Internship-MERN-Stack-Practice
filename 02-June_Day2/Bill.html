@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing</title>
+</head>
+<body>
+    <script>
+        var bill = 0
+        var unit = Number(prompt("Enter the no of units"));
+
+        if (unit <= 100) {
+            bill = unit * 2;
+        } else if(unit <= 200) {
+            bill = 200 + (unit - 100) * 3
+        } else {
+            bill = 500 + (unit - 200) * 5
+        }
+
+        console.log("Total bill = ",bill);
+        
+    </script>
+</body>
+</html>
