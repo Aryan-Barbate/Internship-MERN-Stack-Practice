@@ -33,5 +33,8 @@ Below is a concise daily focus overview for each internship day (1 June — 31 A
 | 2 Jun 2026 | 02-June_Day2 |
 | 3 Jun 2026 | 03-June_Day3 |
 | 4 Jun 2026 | 04-June_Day4 |
+| 6 Jun 2026 | 06-June_day5 |
 
 <!-- Compact placeholders for remaining days: brief entries removed as requested -->
+
+**Status:** Day 5 tasks completed — see the `06-June_day5/` folder for files and examples.
