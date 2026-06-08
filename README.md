@@ -12,7 +12,6 @@ This repository contains my daily internship tasks and practice assignments give
 - `01-June_Day1/`, `02-June_Day2/`, `03-June_Day3/`, `04-June_Day4/`, ... — daily folders containing HTML, JS, images, and task files for that day.
 - See the root folders for the exact files (e.g. `01-June_Day1/basic.js`, `02-June_Day2/variable.js`).
 
-
 ## Day-wise Summary (Concise)
 
 ```mermaid
@@ -37,7 +36,8 @@ Below is a concise daily focus overview for each internship day (1 June — 31 A
 | 5 Jun 2026 | 05-June_Day5 |
 | 6 Jun 2026 | 06-June_Day6 |
 | 7 Jun 2026 | 07-June_Day7 |
+| 8 Jun 2026 | 08-June_Day8 |
 
 <!-- Compact placeholders for remaining days: brief entries removed as requested -->
 
-**Status:** Day 7 Task Completed (07 June 2026) — see the `07-June_Day7/` folder for files and examples.
+**Status:** Day 8 Task Completed (08 June 2026) — see the `08-June_Day8/` folder for files and examples.
