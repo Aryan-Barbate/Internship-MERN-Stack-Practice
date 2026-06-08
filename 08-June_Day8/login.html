@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<body>
+    <h1>Login Form</h1>
+    <input type="text" name="" id="UName" placeholder="Enter Username">
+    <br><br>
+    <input type="password" name="" id="UPass" placeholder="Enter UserPassword">
+
+    <button onclick="getData()">Login</button>
+    <h1 id="msg"></h1>
+
+    <script>
+        let Name = 'Admin'
+        let pass = 'Admin@123'
+        function getData(){
+            var msg = document.getElementById("msg")
+            var UName =document.getElementById("UName")
+            var UPass= document.getElementById("UPass")
+            console.log(UPass.value);
+            
+            msg.innerHTML="Hello "+UName.value
+
+            if(UName.value === Name && UPass.value === pass){
+                alert("Login Successful")
+                msg.innerHTML="Hello "+UName.value +" ,Login Successful"
+
+            } else {
+                alert("Invalid credentials")
+                msg.innerHTML="Login Failed !!!"
+            }
+        }
+    </script>
+</body>
+</html>
