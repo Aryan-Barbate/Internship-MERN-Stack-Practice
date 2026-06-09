@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let empid = prompt("Enter Your Employee ID:");
+        let empname = prompt("Enter Your Employee Name:");  
+        let timein = parseInt(prompt("Enter Your Time In(between 0 to 23 ):"));
+        let greeting = "";
+        if(timein >= 0.00 && timein < 12.00){
+            greeting = " Good Morning";
+        }
+        else if(timein >= 12.00 && timein < 17.00){
+            greeting = " Good Afternoon";
+        }
+        else if(timein >= 17.00 && timein < 20.00){
+            greeting = " Good Evening";
+        }
+        else{
+            greeting = "Good Night";
+        }
+        document.write("<h2>Hello " + empname + "," + greeting + "</h2>");
+        document.write("<h3>Your Employee ID is: " + empid + "</h3>");
+        document.write("<h3>Employee Name: " + empname + "</h3>");
+        document.write("<h3>Time In: " + timein + "</h3>");
+        
+    </script>
+    
+</body>
+</html>

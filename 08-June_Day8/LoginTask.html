@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>LOGIN FORM</h1>
+    <input type="text" name="" id="user" placeholder="Enter Your Username:">
+    <br> <br>
+    <input type="password" name="" id="pass" placeholder="Enter  Your Passsword:">
+    <button onclick="login()">Login</button>
+    <h1 id="msg"></h1>
+    <script>
+         let chance = 3;
+        function login()  {
+            let username="admin"
+            let password="admin@123"
+            var msg=document.getElementById("msg")
+            var a=document.getElementById("user")
+            var b=document.getElementById("pass")
+            if(username===a.value && password===b.value){
+
+                msg.innerHTML="Login Successful !!!<br>Hello " +a.value;
+            }
+            else{
+                chance--;
+                alert("Login Failed.Chances left: " + chance);
+                if(chance <= 0){
+                    msg.innerHTML="You have been locked out for few minutes. Please try again ...";
+                }
+            }
+               
+        }
+    </script>
+
+</body>
+</html>
