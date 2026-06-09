@@ -18,11 +18,11 @@
             let username="admin"
             let password="admin@123"
             var msg=document.getElementById("msg")
-            var a=document.getElementById("user")
-            var b=document.getElementById("pass")
-            if(username===a.value && password===b.value){
+            var user=document.getElementById("user")
+            var pass=document.getElementById("pass")
+            if(username===user.value && password===pass.value){
 
-                msg.innerHTML="Login Successful !!!<br>Hello " +a.value;
+                msg.innerHTML="Login Successful !!!<br>Hello " +user.value;
             }
             else{
                 chance--;
