@@ -1,34 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Greeting</title>
+  </head>
+  <body>
+    <h1>Employee Greeting</h1>
+
+    <label for="employeeId">Employee ID:</label>
+    <input type="text" id="employeeId" placeholder="Enter Employee ID" />
+    <br /><br />
+
+    <label for="employeeName">Employee Name:</label>
+    <input type="text" id="employeeName" placeholder="Enter Employee Name" />
+    <br /><br />
+
+    <label for="hourSelect">Time:</label>
+    <select id="hourSelect">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+
+    <select id="periodSelect">
+      <option value="AM">AM</option>
+      <option value="PM">PM</option>
+    </select>
+
+    <br /><br />
+    <button type="button" onclick="showGreeting()">Show Greeting</button>
+
     <script>
-        let empid = prompt("Enter Your Employee ID:");
-        let empname = prompt("Enter Your Employee Name:");  
-        let timein = parseInt(prompt("Enter Your Time In(between 0 to 23 ):"));
-        let greeting = "";
-        if(timein >= 0.00 && timein < 12.00){
-            greeting = " Good Morning";
+      function showGreeting() {
+        var employeeId = document.getElementById("employeeId").value;
+        var employeeName = document.getElementById("employeeName").value;
+        var hour = parseInt(document.getElementById("hourSelect").value, 10);
+        var period = document.getElementById("periodSelect").value;
+        var timeLabel = hour + " " + period;
+        var hour24 = hour;
+        var greeting = "";
+
+        if (period === "PM" && hour !== 12) {
+          hour24 = hour + 12;
         }
-        else if(timein >= 12.00 && timein < 17.00){
-            greeting = " Good Afternoon";
+
+        if (period === "AM" && hour === 12) {
+          hour24 = 0;
         }
-        else if(timein >= 17.00 && timein < 20.00){
-            greeting = " Good Evening";
+
+        if (hour24 >= 0 && hour24 <= 11) {
+          greeting = "Good Morning";
+        } else if (hour24 <= 16) {
+          greeting = "Good Afternoon";
+        } else if (hour24 <= 19) {
+          greeting = "Good Evening";
+        } else {
+          greeting = "Good Night";
         }
-        else{
-            greeting = "Good Night";
-        }
-        document.write("<h2>Hello " + empname + "," + greeting + "</h2>");
-        document.write("<h3>Your Employee ID is: " + empid + "</h3>");
-        document.write("<h3>Employee Name: " + empname + "</h3>");
-        document.write("<h3>Time In: " + timein + "</h3>");
-        
+
+        document.write("<h1>" + greeting + ", " + employeeName + "</h1>");
+        document.write(
+          "<p><strong>Employee ID:</strong> " + employeeId + "</p>",
+        );
+        document.write(
+          "<p><strong>Employee Name:</strong> " + employeeName + "</p>",
+        );
+        document.write("<p><strong>Time In:</strong> " + timeLabel + "</p>");
+      }
     </script>
-    
-</body>
+  </body>
 </html>
