@@ -1,0 +1,16 @@
+Skills I Already Have:
+
+1. JavaScript Programming
+   - Proficient in writing and understanding JavaScript code
+   - Familiar with ES6+ syntax and modern JavaScript features
+   - Experience with functions, async/await, and promise handling
+
+2. Basic Web Development
+   - Understanding of HTML and CSS fundamentals
+   - Knowledge of client-server architecture concepts
+   - Familiarity with REST API basics and HTTP methods
+
+3. Version Control (Git)
+   - Ability to clone, commit, and push repositories
+   - Understanding of branching and basic Git workflows
+   - Experience with GitHub for collaborative development
