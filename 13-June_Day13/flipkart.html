@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flipkart Login Page</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f0f0f0;
+}
+
+.container{
+    width:1000px;
+    height:550px;
+    background:white;
+    margin:50px auto;
+    display:flex;
+    box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+.left{
+    width:35%;
+    background:#2874f0;
+    color:white;
+    padding:40px;
+    position:relative;
+}
+
+.left h1{
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+.left p{
+    font-size:22px;
+    line-height:35px;
+    color:#dbdbdb;
+}
+
+.left img{
+    width:220px;
+    position:absolute;
+    bottom:30px;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+.right{
+    width:65%;
+    padding:60px 40px;
+    display:flex;
+    flex-direction:column;
+}
+
+input{
+    width:100%;
+    border:none;
+    border-bottom:2px solid #2874f0;
+    padding:10px;
+    font-size:18px;
+    outline:none;
+}
+
+.terms{
+    margin-top:40px;
+    color:gray;
+    line-height:25px;
+}
+
+button{
+    width:100%;
+    height:55px;
+    margin-top:30px;
+    background:#fb641b;
+    color:white;
+    border:none;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.bottom{
+    margin-top:auto;
+    text-align:center;
+    color:#2874f0;
+    font-size:18px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="left">
+
+        <h1>Login</h1>
+
+        <p>
+            Get access to your Orders,<br>
+            Wishlist and Recommendations
+        </p>
+
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Login Image">
+
+    </div>
+
+    <div class="right">
+
+        <input type="text" placeholder="Enter Email/Mobile Number">
+
+        <p class="terms">
+            By continuing, you agree to Flipkart's Terms of Use and Privacy Policy.
+        </p>
+
+        <button>Request OTP</button>
+
+        <div class="bottom">
+            New to Flipkart? Create an account
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

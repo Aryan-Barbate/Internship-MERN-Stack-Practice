@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <style>
+        body{
+            background: #a7d9ea;
+            font-family: Arial;
+        }
+        .card{
+            width: 800px;
+            margin: 50px auto;
+            background: #d8edf7;
+            padding: 40px;
+            border-radius: 20px;
+            position: relative;
+        }
+        .profile{
+            display: flex;
+            gap: 30px;
+        }
+        .profile img{
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 8px solid white;
+        }
+
+        .info h1{
+            margin: 0;
+        }
+        .info h3{
+            margin-top: 5px;
+        }
+        .info p{
+            font-size: 24px;
+        }
+        .stats{
+            display: flex;
+            gap: 80px;
+            margin-top: 20px;
+        }
+        .stats div{
+            text-align: center;
+        }
+        .buttons{
+            margin-top: 30px;
+        }
+        button{
+            width: 180px;
+            height: 60px;
+            font-size: 22px;
+            border-radius: 10px;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .follow{
+            background: black;
+            color: white;
+        }
+
+        .view{
+            background: white;
+        }
+        .corner{
+            width: 180px;
+            height: 180px;
+            background: #6c92e5;
+            border-radius: 0 0 0 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="corner"></div>
+        <div class="profile">
+            <img src="https://static.vecteezy.com/system/resources/previews/065/760/068/non_2x/cool-anime-boy-profile-portraits-symbol-vector.jpg" alt="">
+            <div class="info">
+                <h1>Bradley Steve</h1>
+                <h3>@bradsteve</h3>
+                <p>
+                    I'm a Front End Developer, follow me to be the first who see my new work.
+                </p>
+                <div class="stats">
+                    <div>
+                        <h2>15K</h2>
+                        <h3>Views</h3>
+                    </div>
+
+                    <div>
+                        <h2>82</h2>
+                        <h3>Projects</h3>
+                    </div>
+
+                    <div>
+                        <h2>1.3M</h2>
+                        <h3>followers</h3>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="follow">Follow</button>
+                    <button class="view">View Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
