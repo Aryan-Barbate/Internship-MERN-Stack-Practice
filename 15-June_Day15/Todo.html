@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List</title>
+  </head>
+  <body>
+    <h1>Todo list</h1>
+    <input type="text" id="todo" placeholder="Enter a Task" />
+    <button onclick="addTodo()">Add Todo</button>
+
+    <ul id="todolist"></ul>
+    <script>
+      let arr = [];
+      let task = document.getElementById("todo");
+      let list = document.getElementById("todolist");
+
+      function addTodo() {
+        if (task.value.trim() === "") {
+          alert("Enter a task");
+          return;
+        }
+        arr.push(task.value);
+        task.value = "";
+        renderTodo();
+      }
+
+      function renderTodo() {
+        list.innerHTML = "";
+        arr.forEach((val, index) => {
+          list.innerHTML += `
+                <li>
+                    ${val}
+                    <button onclick="deleteTodo(${index})">
+                        delete
+                    </button>
+
+                    <button onclick="updateTodo(${index})">
+                        Update
+                    </button>
+                </li>
+              `;
+        });
+      }
+
+      function deleteTodo(index) {
+        arr = arr.filter((item, i) => i !== index);
+        renderTodo();
+      }
+
+      function updateTodo(index) {
+        let newTask = prompt("Update Task", arr[index]);
+        if (newTask !== null && newTask.trim() !== "") {
+          arr[index] = newTask;
+          renderTodo();
+        }
+      }
+    </script>
+  </body>
+</html>
