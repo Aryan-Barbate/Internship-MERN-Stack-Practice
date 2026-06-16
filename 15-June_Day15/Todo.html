@@ -4,13 +4,106 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+      }
+
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        width: 400px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      .input-group {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .add-btn {
+        background-color: #28a745;
+        color: white;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #f9f9f9;
+        padding: 10px;
+        margin-bottom: 8px;
+        border-radius: 5px;
+        border: 1px solid #eee;
+      }
+
+      span {
+        flex: 1;
+        margin-right: 10px;
+      }
+
+      .btn-group {
+        display: flex;
+        gap: 5px;
+      }
+
+      .delete-btn {
+        background-color: #dc3545;
+        color: white;
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+
+      .update-btn {
+        background-color: #ffc107;
+        color: white;
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+    </style>
   </head>
   <body>
-    <h1>Todo list</h1>
-    <input type="text" id="todo" placeholder="Enter a Task" />
-    <button onclick="addTodo()">Add Todo</button>
+    <div class="container">
+      <h1>Todo List</h1>
+      <div class="input-group">
+        <input type="text" id="todo" placeholder="Enter a Task" />
+        <button class="add-btn" onclick="addTodo()">Add Todo</button>
+      </div>
 
-    <ul id="todolist"></ul>
+      <ul id="todolist"></ul>
+    </div>
     <script>
       let arr = [];
       let task = document.getElementById("todo");
@@ -31,14 +124,11 @@
         arr.forEach((val, index) => {
           list.innerHTML += `
                 <li>
-                    ${val}
-                    <button onclick="deleteTodo(${index})">
-                        delete
-                    </button>
-
-                    <button onclick="updateTodo(${index})">
-                        Update
-                    </button>
+                    <span>${val}</span>
+                    <div class="btn-group">
+                        <button class="delete-btn" onclick="deleteTodo(${index})">Delete</button>
+                        <button class="update-btn" onclick="updateTodo(${index})">Update</button>
+                    </div>
                 </li>
               `;
         });
