@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background: #f4f4f4;
+            padding: 30px;
+        }
+
+        h1{
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .btn-box{
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        button{
+            padding: 12px 25px;
+            border: none;
+            background: #007bff;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover{
+            background: #0056b3;
+        }
+
+        #container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            gap: 20px;
+        }
+
+        .card{
+            background: white;
+            border-radius: 12px;
+            margin-top: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: 0.3s;
+        }
+
+        .card:hover{
+            transform: translateY((-5px));
+        }
+
+        .card img{
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h2{
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .card-content h3{
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .price{
+            color: green;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product List</h1>
+    <div class="btn-box">
+        <button onclick="getProduct()">Show Product</button>
+    </div>
+    <div id="container"></div>
+    <script>
+        let card = document.getElementById("container");
+        let Products =[
+            {
+                pname:"Watch",
+                cname:"Titan",
+                price:4000,
+                img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500"
+            },
+            {
+                pname:"Mobile",
+                cname:"Samsung",
+                price:40000,
+                img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500"
+            },
+            {
+                pname:"Laptop",
+                cname:"Asus",
+                price:50000,
+                img:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500"
+            },
+            {
+                pname:"Headphone",
+                cname:"Boat",
+                price:2000,
+                img:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500"
+            }  
+        ];
+
+        function getProduct() {
+            card.innerHTML="";
+            Products.forEach((val)=>{
+                card.innerHTML+=`
+                <div class ="card">
+                    <img src="${val.img}" alt="">
+                    <div class ="card-content">
+                        <h2>Product Name: ${val.pname}</h2>
+                        <h3>Company Name: ${val.cname}</h3>
+                        <p class="price">:₹${val.price}</p>
+                    </div>
+                </div>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>
