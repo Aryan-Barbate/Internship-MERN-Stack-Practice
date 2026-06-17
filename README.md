@@ -41,9 +41,9 @@ Below is a concise daily focus overview for each internship day (1 June — 31 A
 | 10 Jun 2026 | 10-June_Day10 |
 | 11 Jun 2026 | 11-June_Day11 |
 | 12 Jun 2026 | 12-June_Day12 |
-| 13 Jun 2026 | 13-June_Day12 |
-| 15 Jun 2026 | 14-June_Day12 |
-| 16 Jun 2026 | 15-June_Day12 |
+| 13 Jun 2026 | 13-June_Day13 |
+| 15 Jun 2026 | 15-June_Day15 |
+| 17 Jun 2026 | 17-June_Day17 |
 
 <!-- Compact placeholders for remaining days: brief entries removed as requested -->
 
