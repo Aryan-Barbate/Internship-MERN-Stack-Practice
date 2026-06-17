@@ -47,4 +47,4 @@ Below is a concise daily focus overview for each internship day (1 June — 31 A
 
 <!-- Compact placeholders for remaining days: brief entries removed as requested -->
 
-**Status:** Day 12 Task Completed (12 June 2026) — see the `12-June_Day12/` folder for files and examples.
+**Status:** Day 17 Task Completed (17 June 2026) — see the `17-June_Day17/` folder for files and examples.
