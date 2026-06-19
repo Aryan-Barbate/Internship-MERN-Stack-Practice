@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+
+    <style>
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: black;
+            padding: 25px;
+            border-radius: 25px;
+            width: 300px; 
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+       
+        .input-group {
+            position: relative;
+            margin-bottom: 20px; 
+        }
+
+        .input-group i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #aaa;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 10px 10px 35px;
+            border-radius: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+        
+        button {
+            width: 100%;
+            padding: 10px;
+            color: black;
+            background-color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>SIGN IN</h1>
+      <form action="">
+        
+        <div class="input-group">
+          <i class="fa-solid fa-user"></i>
+          <input type="text" placeholder="Enter Username" />
+        </div>
+        
+        <div class="input-group">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" placeholder="Enter Password" />
+        </div>
+        
+        <div class="input-group">
+          <i class="fa-solid fa-phone"></i>
+          <input type="number" placeholder="Enter Mob No" />
+        </div>
+        
+        <button type="submit">Sign In</button>
+      </form>
+    </div>
+  </body>
+</html>
