@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflix Clone</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: black;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px 50px;
+      }
+
+      .logo {
+        color: red;
+        font-size: 35px;
+        font-weight: bold;
+      }
+
+      button {
+        background: red;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 120px 20px;
+      }
+
+      .hero h1 {
+        font-size: 50px;
+        margin-bottom: 20px;
+      }
+
+      .hero p {
+        margin-bottom: 20px;
+      }
+
+      input {
+        padding: 12px;
+        width: 250px;
+      }
+
+      .trending {
+        padding: 30px;
+      }
+
+      .row {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .row img {
+        width: 200px;
+        height: 300px;
+        border-radius: 10px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">NETFLIX</div>
+      <button>Sign In</button>
+    </header>
+
+    <div class="hero">
+      <h1>Unlimited movies, TV shows and more</h1>
+      <p>Watch anywhere. Cancel anytime.</p>
+      <input type="email" placeholder="Email address" />
+      <button>Get Started</button>
+    </div>
+
+    <div class="trending">
+      <h2>Trending Now</h2>
+      <div class="row">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5uT8nXIC2YpaOliwa7u3oIzjQRpciA0DWMQ&s"
+          alt="Avengers"
+        />
+        <img
+          src="https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+          alt="Interstellar"
+        />
+        <img
+          src="https://m.media-amazon.com/images/M/MV5BNzY3OWQ5NDktNWQ2OC00ZjdlLThkMmItMDhhNDk3NTFiZGU4XkEyXkFqcGc@._V1_.jpg"
+          alt="Joker"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7g2MW_GYbDXhIxnKXFyKnRCZv_yDL7lg1GQ&s"
+          alt="Inception"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrzzFYczgufsR1VZbadYvtIvRKYnNnb8tz9w&s"
+          alt="Batman"
+        />
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBrytasuKrc48Eicv7CRH4SbrF-QRlucmRXw&s"
+          alt="Spider-Man"
+        />
+        <img
+          src="https://upload.wikimedia.org/wikipedia/en/4/4a/Oppenheimer_%28film%29.jpg"
+          alt="Oppenheimer"
+        />
+      </div>
+
+      <footer>Netflix Clone</footer>
+    </div>
+  </body>
+</html>
