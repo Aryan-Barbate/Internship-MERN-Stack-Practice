@@ -2,30 +2,119 @@
 <html>
   <head>
     <title>Login Form</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        width: 350px;
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        border-radius: 8px;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #667eea;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        background: #667eea;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+
+      button:hover {
+        background: #5563d6;
+      }
+
+      #resendbtn {
+        background: #28a745;
+      }
+
+      #resendbtn:hover {
+        background: #218838;
+      }
+
+      #msg {
+        margin-top: 15px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .success {
+        color: green;
+      }
+
+      .error {
+        color: red;
+      }
+
+      #otpDiv {
+        display: none;
+      }
+    </style>
   </head>
   <body>
-    <h1>Login Form</h1>
+    <div class="container">
+      <h1>Login Form</h1>
 
-    <input type="text" id="UName" placeholder="Enter Username" />
-    <br /><br />
+      <input type="text" id="UName" placeholder="Enter Username" />
+      <br /><br />
 
-    <input type="password" id="UPass" placeholder="Enter Password" />
-    <br /><br />
+      <input type="password" id="UPass" placeholder="Enter Password" />
+      <br /><br />
 
-    <button onclick="getData()">Login</button>
+      <button onclick="getData()">Login</button>
 
-    <div id="otpDiv" style="display: none">
-      <br />
-      <input type="number" id="Uotp" placeholder="Enter OTP" />
-      <button onclick="verifyOTP()">Enter OTP</button>
+      <div id="otpDiv" style="display: none">
+        <br />
+        <input type="number" id="Uotp" placeholder="Enter OTP" />
+        <button onclick="verifyOTP()">Enter OTP</button>
+        <button id="resendbtn" onclick="sendOTP()">Resend OTP</button>
+      </div>
+
+      <h2 id="msg"></h2>
     </div>
-
-    <h2 id="msg"></h2>
-
     <script>
       let Name = "Admin";
       let pass = "Admin@123";
       let OTP = "";
+      let otpTime;
 
       function getData() {
         let msg = document.getElementById("msg");
@@ -35,27 +124,50 @@
         if (UName.value === Name && UPass.value === pass) {
           alert("Login Successful");
           msg.innerHTML = "Hello " + UName.value + ", Login Successful";
+          msg.className = "success";
         } else {
-          OTP = Math.round(Math.random() * 10000);
-
-          alert("Invalid Credentials");
-          alert("OTP:", OTP);
-
           msg.innerHTML = "Login Failed! Please verify OTP.";
           document.getElementById("otpDiv").style.display = "block";
+          msg.className = "error";
+          sendOTP();
         }
+      }
+
+      function sendOTP() {
+        OTP = Math.round(Math.random() * 10000);
+        otpTime = Date.now();
+        alert("Your OTP is : " + OTP);
       }
 
       function verifyOTP() {
         let userOTP = document.getElementById("Uotp").value;
         let msg = document.getElementById("msg");
 
+        let currentTime = Date.now();
+
+        let diff = (currentTime - otpTime) / 1000;
+
+        console.log("Seconds Passed:", diff);
+
+        if (diff > 30) {
+          alert("OTP Expired");
+
+          msg.innerHTML = "OTP Expried! Please Resend OTP.";
+          msg.className = "error";
+
+          OTP = "";
+          return;
+        }
+
         if (userOTP == OTP) {
           alert("Verification Completed");
           msg.innerHTML = "Verification Completed. Login Successfully.";
+          msg.className = "success";
         } else {
           alert("Wrong OTP");
-          msg.innerHTML = "Login Failed!";
+
+          msg.innerHTML = "Wrong OTP!";
+          msg.className = "error";
         }
       }
     </script>
