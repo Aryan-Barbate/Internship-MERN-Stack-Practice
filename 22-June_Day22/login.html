@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login Form</title>
+  </head>
+  <body>
+    <h1>Login Form</h1>
+
+    <input type="text" id="UName" placeholder="Enter Username" />
+    <br /><br />
+
+    <input type="password" id="UPass" placeholder="Enter Password" />
+    <br /><br />
+
+    <button onclick="getData()">Login</button>
+
+    <div id="otpDiv" style="display: none">
+      <br />
+      <input type="number" id="Uotp" placeholder="Enter OTP" />
+      <button onclick="verifyOTP()">Enter OTP</button>
+    </div>
+
+    <h2 id="msg"></h2>
+
+    <script>
+      let Name = "Admin";
+      let pass = "Admin@123";
+      let OTP = "";
+
+      function getData() {
+        let msg = document.getElementById("msg");
+        let UName = document.getElementById("UName");
+        let UPass = document.getElementById("UPass");
+
+        if (UName.value === Name && UPass.value === pass) {
+          alert("Login Successful");
+          msg.innerHTML = "Hello " + UName.value + ", Login Successful";
+        } else {
+          OTP = Math.round(Math.random() * 10000);
+
+          alert("Invalid Credentials");
+          console.log("OTP:", OTP);
+
+          msg.innerHTML = "Login Failed! Please verify OTP.";
+          document.getElementById("otpDiv").style.display = "block";
+        }
+      }
+
+      function verifyOTP() {
+        let userOTP = document.getElementById("Uotp").value;
+        let msg = document.getElementById("msg");
+
+        if (userOTP == OTP) {
+          alert("Verification Completed");
+          msg.innerHTML = "Verification Completed. Login Successfully.";
+        } else {
+          alert("Wrong OTP");
+          msg.innerHTML = "Login Failed!";
+        }
+      }
+    </script>
+  </body>
+</html>
