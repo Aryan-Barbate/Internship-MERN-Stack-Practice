@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Converter</title>
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f9f9f9;
+    }
+
+    textarea {
+      width: 100%;
+      max-width: 500px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      background-color: #e0e0e0;
+      border: 1px solid #bbb;
+      padding: 8px 12px;
+      margin-right: 5px;
+      margin-top: 15px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #d5d5d5;
+    }
+
+  </style>
+  <body>
+    <div class="container">
+    <h1>Text Converter</h1>
+    <textarea name="" id="content" rows="15" cols="60"></textarea>
+    <br /><br />
+    <button onclick="ConvertToUpper()">Convert to UpperCase</button>
+    <button onclick="ConvertToLower()">Convert to LowerCase</button>
+    <button onclick="CountWord()">Count Letters</button>
+</div>
+    <script>
+      let text = document.getElementById("content");
+
+      function ConvertToUpper() {
+        text.value = text.value.toUpperCase();
+      }
+
+      function ConvertToLower() {
+        text.value = text.value.toLowerCase();
+      }
+
+      function CountWord() {
+        let words = text.value.split(" ");
+        text.value = words.length;
+      }
+    </script>
+  </body>
+</html>
