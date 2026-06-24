@@ -48,7 +48,9 @@ Below is a concise daily focus overview for each internship day (1 June — 31 A
 | 19 Jun 2026 | 19-June_Day19 |
 | 20 Jun 2026 | 20-June_Day20 |
 | 22 Jun 2026 | 22-June_Day22 |
+| 23 Jun 2026 | 23-June_Day23 |
+| 24 Jun 2026 | 24-June_Day24 |
 
 <!-- Compact placeholders for remaining days: brief entries removed as requested -->
 
-**Status:** Day 22 Task Completed (22 June 2026) — see the `22-June_Day22/` folder for files and examples.
+**Status:** Day 24 Task Completed (24 June 2026) — see the `24-June_Day24/` folder for files and examples.
