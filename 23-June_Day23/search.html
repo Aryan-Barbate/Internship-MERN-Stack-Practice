@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazon Lite Search</title>
 
     <style>
@@ -10,59 +11,63 @@
             margin:0;
             padding:0;
             box-sizing:border-box;
-            font-family:Arial, sans-serif;
+            font-family:Arial,sans-serif;
         }
 
         body{
-            background:#f4f4f4;
+            background:#f1f3f6;
             padding:30px;
         }
 
         h1{
             text-align:center;
-            margin-bottom:20px;
             color:#232f3e;
+            margin-bottom:25px;
         }
 
         .controls{
             display:flex;
             justify-content:center;
             gap:15px;
-            margin-bottom:25px;
+            margin-bottom:30px;
             flex-wrap:wrap;
+        }
+
+        #searchBar,
+        select{
+            padding:12px;
+            border:1px solid #ccc;
+            border-radius:10px;
+            font-size:15px;
         }
 
         #searchBar{
             width:350px;
-            padding:12px;
-            border:2px solid #ddd;
-            border-radius:8px;
-            font-size:16px;
         }
 
-        select{
-            padding:12px;
-            border-radius:8px;
-            border:2px solid #ddd;
-            cursor:pointer;
+        #searchBar:focus,
+        select:focus{
+            outline:none;
+            border-color:#ff9900;
         }
 
         #productContainer{
             display:grid;
             grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-            gap:20px;
+            gap:25px;
         }
 
         .card{
             background:white;
-            border-radius:12px;
+            border-radius:15px;
             overflow:hidden;
-            box-shadow:0 4px 10px rgba(0,0,0,0.1);
+            box-shadow:0 4px 12px rgba(0,0,0,0.1);
             transition:0.3s;
         }
 
         .card:hover{
-            transform:translateY(-5px);
+            transform:translateY(-8px);
+            box-shadow:0 8px 20px rgba(0,0,0,0.15);
         }
 
         .card img{
@@ -76,30 +81,38 @@
         }
 
         .card h3{
-            margin-bottom:10px;
+            margin-bottom:8px;
+            color:#222;
+        }
+
+        .company{
+            color:#666;
+            margin-bottom:8px;
         }
 
         .price{
             color:green;
-            font-size:18px;
+            font-size:20px;
             font-weight:bold;
             margin:10px 0;
         }
 
         .popular{
-            color:orange;
+            color:#ff9900;
             font-weight:bold;
+            margin-bottom:10px;
         }
 
         button{
             width:100%;
             padding:10px;
             background:#ff9900;
-            border:none;
             color:white;
-            border-radius:6px;
+            border:none;
+            border-radius:8px;
             cursor:pointer;
             font-size:15px;
+            transition:0.3s;
         }
 
         button:hover{
@@ -174,6 +187,62 @@ let products = [
     price:3500,
     popularity:80,
     image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500"
+},
+
+{
+    pname:"Camera",
+    company:"Canon",
+    price:30000,
+    popularity:88,
+    image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500"
+},
+
+{
+    pname:"Tablet",
+    company:"Samsung",
+    price:18000,
+    popularity:82,
+    image:"https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=500"
+},
+
+{
+    pname:"Speaker",
+    company:"JBL",
+    price:3500,
+    popularity:87,
+    image:"https://images.unsplash.com/photo-1589003077984-894e133dabab?w=500"
+},
+
+{
+    pname:"Keyboard",
+    company:"Logitech",
+    price:1500,
+    popularity:75,
+    image:"https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?w=500"
+},
+
+{
+    pname:"Mouse",
+    company:"HP",
+    price:800,
+    popularity:72,
+    image:"https://images.unsplash.com/photo-1527814050087-3793815479db?w=500"
+},
+
+{
+    pname:"Backpack",
+    company:"Skybags",
+    price:1200,
+    popularity:78,
+    image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500"
+},
+
+{
+    pname:"Smart TV",
+    company:"LG",
+    price:42000,
+    popularity:91,
+    image:"https://images.unsplash.com/photo-1593784991095-a205069470b6?w=500"
 }
 
 ];
@@ -184,7 +253,7 @@ const sortOption = document.getElementById("sortOption");
 
 function display(list){
 
-    container.innerHTML="";
+    container.innerHTML = "";
 
     list.forEach(product=>{
 
@@ -193,13 +262,13 @@ function display(list){
         div.className = "card";
 
         div.innerHTML = `
-            <img src="${product.image}" alt="">
+            <img src="${product.image}" alt="${product.pname}">
             
             <div class="card-body">
 
                 <h3>${product.pname}</h3>
 
-                <p>${product.company}</p>
+                <p class="company">${product.company}</p>
 
                 <p class="price">₹${product.price}</p>
 
@@ -219,19 +288,14 @@ function display(list){
 
 function filterAndSort(){
 
-    let searchValue =
-        searchBar.value.toLowerCase();
+    let searchValue = searchBar.value.toLowerCase();
 
     let filtered = products.filter(product => {
 
         return (
-            product.pname.toLowerCase()
-            .includes(searchValue)
-
+            product.pname.toLowerCase().includes(searchValue)
             ||
-
-            product.company.toLowerCase()
-            .includes(searchValue)
+            product.company.toLowerCase().includes(searchValue)
         );
 
     });
