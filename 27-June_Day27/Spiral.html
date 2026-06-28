@@ -1,0 +1,48 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Geometric Flower Spiral</title> 
+    <style> 
+        body { 
+            margin: 0; 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background-color: #bbf2c3; 
+            overflow: hidden; 
+        } 
+        .canvas { 
+            width: 500px; 
+            height: 500px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            transform: rotate(45deg); 
+        } 
+        .square { 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            width: 91%; 
+            height: 91%; 
+            border: 2px solid #143d1a;  
+            border-radius: 12px;        
+            box-sizing: border-box; 
+            animation: spin 100s linear infinite; 
+        } 
+        @keyframes spin { 
+            to { transform: rotate(360deg); } 
+        } 
+    </style> 
+</head> 
+<body> 
+    <div class="canvas" id="canvas"></div> 
+
+    <script>
+        document.getElementById('canvas').innerHTML = '<div>'.repeat(30).replace(/<div>/g, '<div class="square">') + '</div>'.repeat(30);
+    </script>
+</body> 
+</html>
