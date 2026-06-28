@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PhotoFolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins,sans-serif;
+}
+
+body{
+    background:#000;
+    color:#fff;
+}
+
+/* Header */
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 50px;
+    background:#000;
+    position:fixed;
+    width:100%;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo i{
+    color:#22c58b;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav a{
+    color:#bbb;
+    text-decoration:none;
+}
+
+nav a:hover{
+    color:#22c58b;
+}
+
+/* Dropdown */
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown-menu{
+    display:none;
+    position:absolute;
+    top:25px;
+    background:#111;
+    list-style:none;
+    width:140px;
+}
+
+.dropdown:hover .dropdown-menu{
+    display:block;
+}
+
+.dropdown-menu li{
+    padding:10px;
+}
+
+/* Social */
+
+.social{
+    display:flex;
+    gap:15px;
+}
+
+.social a{
+    color:#bbb;
+}
+
+.social a:hover{
+    color:#22c58b;
+}
+
+/* Hero */
+
+.hero{
+    text-align:center;
+    padding:140px 20px 40px;
+}
+
+.hero h1{
+    font-size:50px;
+}
+
+.hero span{
+    color:#22c58b;
+}
+
+.hero p{
+    max-width:600px;
+    margin:20px auto;
+    color:#888;
+}
+
+button{
+    padding:12px 30px;
+    background:#22c58b;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+/* Gallery */
+
+.gallery{
+    width:90%;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+}
+
+.gallery img{
+    width:100%;
+    border-radius:8px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+<i class="fa-solid fa-camera"></i>
+<h2>PhotoFolio</h2>
+</div>
+
+<nav>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+
+<li class="dropdown">
+<a href="#">Gallery ▼</a>
+
+<ul class="dropdown-menu">
+<li><a href="#">Nature</a></li>
+<li><a href="#">Travel</a></li>
+<li><a href="#">Wildlife</a></li>
+</ul>
+
+</li>
+
+<li><a href="#">Services</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</nav>
+
+<div class="social">
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+</div>
+
+</header>
+
+<section class="hero">
+
+<h1>I'm <span>Jenny Wilson</span><br>Professional Photographer</h1>
+
+<p>
+Capturing beautiful moments through creative photography.
+</p>
+
+<button>Hire Me</button>
+
+</section>
+
+<section class="gallery">
+
+<img src="https://picsum.photos/400/300?1">
+<img src="https://picsum.photos/400/300?2">
+<img src="https://picsum.photos/400/300?3">
+<img src="https://picsum.photos/400/300?4">
+<img src="https://picsum.photos/400/300?5">
+<img src="https://picsum.photos/400/300?6">
+<img src="https://picsum.photos/400/300?7">
+<img src="https://picsum.photos/400/300?8">
+
+</section>
+
+</body>
+</html>
