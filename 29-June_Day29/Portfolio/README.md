@@ -2,6 +2,11 @@
 
 A stunning 3D book-style portfolio website developed using HTML, CSS, and vanilla JavaScript. 
 
+## Live Demo
+
+https://portfolio-aryanbarbate.netlify.app/
+
+
 ## Features
 - **3D Book Effect:** Pages turn smoothly giving a realistic physical book feel.
 - **Scroll Navigation:** Seamlessly navigate between pages using mouse scrolling.
