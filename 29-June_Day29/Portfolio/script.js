@@ -123,3 +123,76 @@ window.addEventListener('wheel', (e) => {
     isScrolling = false;
   }, 1000);
 });
+
+// Mobile Slider Logic
+const mobileSections = document.querySelectorAll(".mobile-section");
+const mobileNext = document.getElementById("mobile-next");
+const mobilePrev = document.getElementById("mobile-prev");
+let currentMobileIndex = 0;
+
+function updateMobileSlider() {
+  if (window.innerWidth > 768) return;
+  mobileSections.forEach((section, index) => {
+    section.classList.remove("mobile-active", "mobile-prev-anim");
+    if (index === currentMobileIndex) {
+      section.classList.add("mobile-active");
+    } else if (index < currentMobileIndex) {
+      section.classList.add("mobile-prev-anim");
+    }
+  });
+}
+
+// Initialize on load and resize
+window.addEventListener("load", updateMobileSlider);
+window.addEventListener("resize", updateMobileSlider);
+
+if (mobileNext && mobilePrev) {
+  mobileNext.addEventListener("click", () => {
+    if (currentMobileIndex < mobileSections.length - 1) {
+      currentMobileIndex++;
+      updateMobileSlider();
+    }
+  });
+
+  mobilePrev.addEventListener("click", () => {
+    if (currentMobileIndex > 0) {
+      currentMobileIndex--;
+      updateMobileSlider();
+    }
+  });
+}
+
+// Swipe Gesture Logic
+let touchStartX = 0;
+let touchEndX = 0;
+let touchStartY = 0;
+let touchEndY = 0;
+
+document.addEventListener("touchstart", (e) => {
+  if (window.innerWidth > 768) return;
+  touchStartX = e.changedTouches[0].screenX;
+  touchStartY = e.changedTouches[0].screenY;
+}, { passive: true });
+
+document.addEventListener("touchend", (e) => {
+  if (window.innerWidth > 768) return;
+  touchEndX = e.changedTouches[0].screenX;
+  touchEndY = e.changedTouches[0].screenY;
+  
+  // Ensure it's a horizontal swipe, not a vertical scroll
+  if (Math.abs(touchStartX - touchEndX) > Math.abs(touchStartY - touchEndY) && Math.abs(touchStartX - touchEndX) > 50) {
+    if (touchStartX - touchEndX > 50) {
+      // Swiped left -> Next
+      if (currentMobileIndex < mobileSections.length - 1) {
+        currentMobileIndex++;
+        updateMobileSlider();
+      }
+    } else if (touchEndX - touchStartX > 50) {
+      // Swiped right -> Prev
+      if (currentMobileIndex > 0) {
+        currentMobileIndex--;
+        updateMobileSlider();
+      }
+    }
+  }
+}, { passive: true });

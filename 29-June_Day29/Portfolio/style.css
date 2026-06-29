@@ -426,10 +426,138 @@ body {
   top: -1.8rem;
 }
 
+.mobile-nav {
+  display: none;
+}
+
 /* Responsive */
 @media screen and (max-width: 1024px) {
   .wrapper {
     width: 60rem;
     height: 40rem;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  html {
+    font-size: 75%;
+  }
+}
+
+/* On smaller screens, switch to a horizontal slider / 1 section per screen layout */
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 85%; /* Restore readability */
+  }
+  body {
+    overflow: hidden; /* Prevent body scroll, sections will scroll internally */
+    align-items: center;
+  }
+  .wrapper {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    animation: none;
+  }
+  .cover {
+    display: none; /* Hide 3D covers */
+  }
+  .book {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    perspective: none;
+    display: block;
+  }
+  .book-page {
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    left: 0;
+    top: 0;
+    box-shadow: none !important;
+    transform: none !important;
+    transition: none !important;
+    padding: 0 !important;
+    background: transparent !important;
+    right: auto !important;
+  }
+  .mobile-section {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    padding: 2rem !important;
+    padding-bottom: 6rem !important; /* space for nav buttons */
+    overflow-y: auto !important;
+    background: var(--bg-color) !important;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%) !important;
+    transition: transform 0.4s ease, opacity 0.4s ease !important;
+    z-index: 0;
+  }
+  .mobile-section.mobile-active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) !important;
+    z-index: 10;
+  }
+  .mobile-section.mobile-prev-anim {
+    transform: translateX(-100%) !important;
+  }
+  /* Hide navigation buttons for 3D pages */
+  .nextprev-btn,
+  .number-page,
+  .back-profile {
+    display: none !important;
+  }
+  .services-box .services-content {
+    flex: 1 1 100%;
+  }
+  .skills-box .skills-content {
+    flex: 1 1 100%;
+  }
+  .mobile-nav {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    z-index: 100;
+  }
+  .mobile-nav button {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: var(--main-color);
+    color: var(--white-color);
+    border-radius: 50%;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+  }
+  .mobile-nav button:active {
+    background: transparent;
+    color: var(--main-color);
+    border: var(--border);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 80%;
+  }
+  .mobile-section {
+    padding: 1.5rem !important;
+    padding-bottom: 6rem !important;
+  }
+  .profile-page h1 {
+    font-size: 2.2rem;
   }
 }
