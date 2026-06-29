@@ -2,6 +2,7 @@
 const pageTurnBtn = document.querySelectorAll(".nextprev-btn");
 pageTurnBtn.forEach((el, index) => {
   el.onclick = () => {
+    if (window.innerWidth <= 768) return;
     const pageTurnId = el.getAttribute("data-page");
     const pageTurn = document.getElementById(pageTurnId);
     if (pageTurn.classList.contains("turn")) {
@@ -22,6 +23,11 @@ pageTurnBtn.forEach((el, index) => {
 const pages = document.querySelectorAll(".book-page.page-right");
 const contactMeBtn = document.querySelector(".btn.contact-me");
 contactMeBtn.onclick = () => {
+  if (window.innerWidth <= 768) {
+    currentMobileIndex = 6;
+    updateMobileSlider();
+    return;
+  }
   pages.forEach((page, index) => {
     setTimeout(() => {
       page.classList.add("turn");
@@ -45,6 +51,11 @@ function reverseIndex() {
 //back profile button when click
 const backProfileBtn = document.querySelector(".back-profile");
 backProfileBtn.onclick = () => {
+  if (window.innerWidth <= 768) {
+    currentMobileIndex = 0;
+    updateMobileSlider();
+    return;
+  }
   pages.forEach((_, index) => {
     setTimeout(() => {
       reverseIndex();
@@ -91,11 +102,13 @@ pages.forEach((_, index) => {
 let isScrolling = false;
 
 window.addEventListener('wheel', (e) => {
+  if (window.innerWidth <= 768) return;
   if (isScrolling) return;
   isScrolling = true;
   
   if (e.deltaY > 0) {
     // Scroll down -> next page
+
     const forwardBtns = document.querySelectorAll(".nextprev-btn:not(.back)");
     for(let i=0; i<forwardBtns.length; i++) {
         const pageTurnId = forwardBtns[i].getAttribute("data-page");
