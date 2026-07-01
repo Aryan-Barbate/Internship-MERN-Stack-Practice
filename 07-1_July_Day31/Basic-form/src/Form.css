@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+}
+
+.container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right,#a63cc6,#ff3e96);
+}
+
+.card{
+    width: 370px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card h1{
+    margin-bottom: 25px;
+}
+
+.tabs{
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.tabs button{
+    width: 50%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    background: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.tabs .active{
+    background: linear-gradient(to right,#a63cc6,#ff3e96);
+    border: none;
+    color: white;
+}
+
+input{
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.forgot{
+    color: #ff3e96;
+    text-align: left;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.login-btn{
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 4px;
+    background: linear-gradient(to right,#a63cc6,#ff3e96);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.bottom-text{
+    margin-top: 25px;
+    color: #444;
+}
+
+.bottom-text span{
+    color: #ff3e96;
+    cursor: pointer;
+}
