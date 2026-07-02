@@ -11,14 +11,14 @@
 }
 
 :root {
-  --bg-color: #081b29;
-  --main-color: #00abf0;
-  --text-color: #333;
-  --second-text-color: #555;
-  --white-color: #fff;
-  --cover-color: linear-gradient(45deg, #00abf0, #006e9a);
-  --pages-color: linear-gradient(90deg, #fff, #ddd);
-  --border: 0.125rem solid #00abf0;
+  --bg-color: #2d004d;
+  --main-color: #a020f0;
+  --text-color: #1f1235;
+  --second-text-color: #5f3b83;
+  --white-color: #ffffff;
+  --cover-color: linear-gradient(45deg, #a020f0, #800080);
+  --pages-color: linear-gradient(90deg, #ffffff, #ede1f7);
+  --border: 0.125rem solid #a020f0;
   --box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.2);
 }
 body {
@@ -89,6 +89,7 @@ body {
   box-shadow: 0 0 0.6rem rgba(0, 0, 0, 0.1);
   display: flex;
   padding: 2rem;
+  color: var(--text-color);
 }
 .book-page.page-left {
   box-shadow: -0.6rem 0.6rem 0.6rem rgba(0, 0, 0, 0.1);
@@ -188,6 +189,7 @@ body {
   height: 100%;
   background: var(--pages-color);
   padding: 1.5rem 2rem;
+  color: var(--text-color);
 }
 .book-page .page-front {
   transform: rotateY(0deg) translateZ(1px);
@@ -449,7 +451,8 @@ body {
   html {
     font-size: 85%; /* Restore readability */
   }
-  html, body {
+  html,
+  body {
     height: 100%;
     min-height: -webkit-fill-available;
   }
@@ -501,7 +504,9 @@ body {
     opacity: 0;
     visibility: hidden;
     transform: translateX(100%) !important;
-    transition: transform 0.4s ease, opacity 0.4s ease !important;
+    transition:
+      transform 0.4s ease,
+      opacity 0.4s ease !important;
     z-index: 0;
     pointer-events: auto !important;
   }
