@@ -5,7 +5,7 @@ Daily internship tasks and practice assignments in the **MERN stack**
 **1 June 2026 → 31 August 2026**. Each day's work lives in its own folder,
 named `MM-DD_Month_DayN` (e.g. `06-01_June_Day1`, `07-01_July_Day31`).
 
-**Progress:** Day 32 reached · currently in the **React** phase.
+**Progress:** Day 33 reached · currently in the **React** phase.
 
 ## Learning path
 
@@ -31,8 +31,8 @@ flowchart TB
   JS, images, or project files.
 - Some calendar days have **no folder** (Days 14, 16, 21, 25, 26) —
   weekend / rest days, so nothing was committed those dates.
-- The most recent folder, `07-04_July_Day32/`, contains a **CSS Grid**
-  layout (`grid.html`).
+- The most recent folder, `07-07_July_Day33/`, contains a **React Netflix clone**
+  (`Netflix-clone/`).
 - React projects (`07-01_July_Day31/`) were the first Vite + React 19
   work.
 
@@ -67,6 +67,7 @@ flowchart TB
 | `06-30_June_Day30` | JS Promises                             | `promise.js`                                       |
 | `07-01_July_Day31` | First **React 19 + Vite** projects      | `1st-project/`, `Basic-form/`                      |
 | `07-04_July_Day32` | CSS Grid layout                         | `grid.html`                                        |
+| `07-07_July_Day33` | React Netflix clone                     | `Netflix-clone/`                                   |
 
 > Folders are the source of truth — if a folder above exists in the
 > repo, it's documented here.
