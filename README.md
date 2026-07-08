@@ -68,6 +68,7 @@ flowchart TB
 | `07-01_July_Day31` | First **React 19 + Vite** projects      | `1st-project/`, `Basic-form/`                      |
 | `07-04_July_Day32` | CSS Grid layout                         | `grid.html`                                        |
 | `07-07_July_Day33` | React Netflix clone                     | `Netflix-clone/`                                   |
+| `07-08_July_Day34` | Props and Components practice           | `Props-Cards/`                                     |
 
 > Folders are the source of truth — if a folder above exists in the
 > repo, it's documented here.
