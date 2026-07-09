@@ -5,7 +5,7 @@ Daily internship tasks and practice assignments in the **MERN stack**
 **1 June 2026 → 31 August 2026**. Each day's work lives in its own folder,
 named `MM-DD_Month_DayN` (e.g. `06-01_June_Day1`, `07-01_July_Day31`).
 
-**Progress:** Day 33 reached · currently in the **React** phase.
+**Progress:** Day 35 reached · currently in the **React** phase.
 
 ## Learning path
 
@@ -31,8 +31,8 @@ flowchart TB
   JS, images, or project files.
 - Some calendar days have **no folder** (Days 14, 16, 21, 25, 26) —
   weekend / rest days, so nothing was committed those dates.
-- The most recent folder, `07-07_July_Day33/`, contains a **React Netflix clone**
-  (`Netflix-clone/`).
+- The most recent folder, `07-09_July_Day35/`, contains a **component-based
+  React replica** of the Day 29 portfolio (`Portfolio-React/`).
 - React projects (`07-01_July_Day31/`) were the first Vite + React 19
   work.
 
@@ -69,6 +69,7 @@ flowchart TB
 | `07-04_July_Day32` | CSS Grid layout                         | `grid.html`                                        |
 | `07-07_July_Day33` | React Netflix clone                     | `Netflix-clone/`                                   |
 | `07-08_July_Day34` | Props and Components practice           | `Props-Cards/`                                     |
+| `07-09_July_Day35` | Portfolio rebuilt as a React 19 app     | `Portfolio-React/`                                 |
 
 > Folders are the source of truth — if a folder above exists in the
 > repo, it's documented here.
@@ -77,10 +78,11 @@ flowchart TB
 
 - **Static HTML pages** (most days): just open the `.html` file in any
   browser.
-- **React projects** (`07-1_July_Day31/`):
+- **React projects** (`07-01_July_Day31/`, `07-07_July_Day33/`,
+  `07-08_July_Day34/`, `07-09_July_Day35/`):
 
   ```bash
-  cd "07-01_July_Day31/Basic-form"   # or 1st-project
+  cd "07-09_July_Day35/Portfolio-React"   # or any other React folder
   npm install
   npm run dev                       # Vite dev server
   ```
