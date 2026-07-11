@@ -5,7 +5,7 @@ Daily internship tasks and practice assignments in the **MERN stack**
 **1 June 2026 → 31 August 2026**. Each day's work lives in its own folder,
 named `MM-DD_Month_DayN` (e.g. `06-01_June_Day1`, `07-01_July_Day31`).
 
-**Progress:** Day 35 reached · currently in the **React** phase.
+**Progress:** Day 36 reached · currently in the **React** phase.
 
 ## Learning path
 
@@ -31,8 +31,9 @@ flowchart TB
   JS, images, or project files.
 - Some calendar days have **no folder** (Days 14, 16, 21, 25, 26) —
   weekend / rest days, so nothing was committed those dates.
-- The most recent folder, `07-09_July_Day35/`, contains a **component-based
-  React replica** of the Day 29 portfolio (`Portfolio-React/`).
+- The most recent folder, `07-11_July_Day36/`, contains an **HTML & CSS
+  chess board** rendered with CSS Grid and Unicode pieces (`index.html`,
+  `style.css`).
 - React projects (`07-01_July_Day31/`) were the first Vite + React 19
   work.
 
@@ -70,6 +71,7 @@ flowchart TB
 | `07-07_July_Day33` | React Netflix clone                     | `Netflix-clone/`                                   |
 | `07-08_July_Day34` | Props and Components practice           | `Props-Cards/`                                     |
 | `07-09_July_Day35` | Portfolio rebuilt as a React 19 app     | `Portfolio-React/`                                 |
+| `07-11_July_Day36` | HTML & CSS chess board (start position) | `index.html`, `style.css`                          |
 
 > Folders are the source of truth — if a folder above exists in the
 > repo, it's documented here.
