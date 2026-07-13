@@ -1,0 +1,26 @@
+.container {
+  max-width: 360px;
+  margin: 48px auto;
+  padding: 24px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: system-ui, Arial, sans-serif;
+  background: #ffffff;
+}
+
+.container h2 {
+  margin: 8px 0;
+  color: #333;
+}
+
+.container button {
+  margin: 12px 8px;
+  padding: 8px 18px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  background: #4f46e5;
+  border: none;
+  border-radius: 8px;
+}
