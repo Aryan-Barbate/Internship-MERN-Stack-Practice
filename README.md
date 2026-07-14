@@ -5,7 +5,7 @@ Daily internship tasks and practice assignments in the **MERN stack**
 **1 June 2026 → 31 August 2026**. Each day's work lives in its own folder,
 named `MM-DD_Month_DayN` (e.g. `06-01_June_Day1`, `07-01_July_Day31`).
 
-**Progress:** Day 37 reached · currently in the **React** phase.
+**Progress:** Day 38 reached · currently in the **React** phase.
 
 ## Learning path
 
@@ -27,13 +27,13 @@ flowchart TB
 ## Repository structure
 
 - **Day folders** — `06-01_June_Day1/`, `06-02_June_Day2/`, …,
-  `07-13_July_Day37/` — one per working day. Each holds the day's HTML,
+  `07-14_July_Day38/` — one per working day. Each holds the day's HTML,
   JS, images, or project files.
 - Some calendar days have **no folder** (Days 14, 16, 21, 25, 26) —
   weekend / rest days, so nothing was committed those dates.
-- The most recent folder, `07-13_July_Day37/`, contains two **React hooks**
-  demos — `UseEffect/` (book price calculator) and `UseRef-Demo/`
-  (login form with refs).
+- The most recent folder, `07-14_July_Day38/`, contains four React practice
+  projects — `Task-Form/`, `Context-Hook/`, `Form-handle/`, and
+  `Form-State/`.
 - React projects (`07-01_July_Day31/`) were the first Vite + React 19
   work.
 
@@ -73,6 +73,7 @@ flowchart TB
 | `07-09_July_Day35` | Portfolio rebuilt as a React 19 app     | `Portfolio-React/`                                 |
 | `07-11_July_Day36` | HTML & CSS chess board (start position) | `index.html`, `style.css`                          |
 | `07-13_July_Day37` | React hooks practice: useEffect & useRef | `UseEffect/`, `UseRef-Demo/`                       |
+| `07-14_July_Day38` | React form & state practice              | `Task-Form/`, `Context-Hook/`, `Form-handle/`, `Form-State/` |
 
 > Folders are the source of truth — if a folder above exists in the
 > repo, it's documented here.
@@ -82,10 +83,11 @@ flowchart TB
 - **Static HTML pages** (most days): just open the `.html` file in any
   browser.
 - **React projects** (`07-01_July_Day31/`, `07-07_July_Day33/`,
-  `07-08_July_Day34/`, `07-09_July_Day35/`, `07-13_July_Day37/`):
+  `07-08_July_Day34/`, `07-09_July_Day35/`, `07-13_July_Day37/`,
+  `07-14_July_Day38/`):
 
   ```bash
-   cd "07-13_July_Day37/UseEffect"   # or any other React folder
+   cd "07-14_July_Day38/Form-State"   # or any other React folder
   npm install
   npm run dev                       # Vite dev server
   ```
