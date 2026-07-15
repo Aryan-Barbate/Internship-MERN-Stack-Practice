@@ -1,0 +1,12 @@
+# Environment / secrets
+.env
+config.js
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Logs / OS
+*.log
+.DS_Store
