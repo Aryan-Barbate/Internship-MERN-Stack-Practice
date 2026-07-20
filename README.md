@@ -5,7 +5,7 @@ Daily internship tasks and practice assignments in the **MERN stack**
 **1 June 2026 → 31 August 2026**. Each day's work lives in its own folder,
 named `MM-DD_Month_DayN` (e.g. `06-01_June_Day1`, `07-01_July_Day31`).
 
-**Progress:** Day 39 reached · currently in the **React** phase.
+**Progress:** Day 40 reached · currently in the **React** phase.
 
 ## Learning path
 
@@ -37,6 +37,8 @@ flowchart TB
 - The `07-15_July_Day39/` folder is a standalone **vanilla JS chatbot**
   that talks to the Groq API. It needs a key set in `config.js`
   (`window.CHATBOT_CONFIG.groqApiKey`).
+- The `07-20_July_Day40/` folder contains a **React Router** practice app
+  (`Nav-routing/`) with a shared navbar and multiple client-side routes.
 - React projects (`07-01_July_Day31/`) were the first Vite + React 19
   work.
 
@@ -78,6 +80,7 @@ flowchart TB
 | `07-13_July_Day37` | React hooks practice: useEffect & useRef | `UseEffect/`, `UseRef-Demo/`                       |
 | `07-14_July_Day38` | React form & state practice              | `Task-Form/`, `Context-Hook/`, `Form-handle/`, `Form-State/` |
 | `07-15_July_Day39` | Basic vanilla-JS chatbot (Groq API)      | `index.html`, `app.js`, `config.js`, `style.css` |
+| `07-20_July_Day40` | React Router: navigation & routing       | `Nav-routing/` (React 19 + react-router-dom v7)  |
 
 > Folders are the source of truth — if a folder above exists in the
 > repo, it's documented here.
@@ -89,10 +92,10 @@ flowchart TB
   `config.js` (`window.CHATBOT_CONFIG.groqApiKey`), then open `index.html`.
 - **React projects** (`07-01_July_Day31/`, `07-07_July_Day33/`,
   `07-08_July_Day34/`, `07-09_July_Day35/`, `07-13_July_Day37/`,
-  `07-14_July_Day38/`):
+  `07-14_July_Day38/`, `07-20_July_Day40/`):
 
   ```bash
-   cd "07-14_July_Day38/Form-State"   # or any other React folder
+   cd "07-20_July_Day40/Nav-routing"   # or any other React folder
   npm install
   npm run dev                       # Vite dev server
   ```
