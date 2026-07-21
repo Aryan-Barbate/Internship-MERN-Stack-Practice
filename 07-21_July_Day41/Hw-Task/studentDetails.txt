@@ -1,0 +1,3 @@
+101,Aryan,87
+103,Aayush,75
+100,Ajinkya,56
