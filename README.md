@@ -7,7 +7,7 @@ Daily internship tasks and practice assignments in the **MERN stack**
 **1 June 2026 → 31 August 2026**. Each day's work lives in its own folder,
 named `MM-DD_Month_DayN` (e.g. `06-01_June_Day1`, `07-01_July_Day31`).
 
-**Progress:** Day 41 reached · currently in the **React** phase.
+**Progress:** Day 42 reached · currently in the **Express / Node** phase.
 
 ## Learning path
 
@@ -29,7 +29,7 @@ flowchart TB
 ## Repository structure
 
 - **Day folders** — `06-01_June_Day1/`, `06-02_June_Day2/`, …,
-  `07-21_July_Day41/` — one per working day. Each holds the day's HTML,
+  `07-23_July_Day42/` — one per working day. Each holds the day's HTML,
   JS, images, or project files.
 - Some calendar days have **no folder** (Days 14, 16, 21, 25, 26) —
   weekend / rest days, so nothing was committed those dates.
@@ -45,6 +45,9 @@ flowchart TB
   operations — `ClassWork/` (custom modules, math utilities, `fs` read/write)
   and `Hw-Task/` (CLI student management system with CRUD operations using
   `readline` and `fs`).
+- The `07-23_July_Day42/` folder covers **Node.js & Express.js basics** —
+  `Nodejs/` (native `http` module server) and `ExpressJs/` (Express 5 server
+  with Mongoose MongoDB connection).
 - React projects (`07-01_July_Day31/`) were the first Vite + React 19
   work.
 
@@ -88,6 +91,7 @@ flowchart TB
 | `07-15_July_Day39` | Basic vanilla-JS chatbot (Groq API)      | `index.html`, `app.js`, `config.js`, `style.css`             |
 | `07-20_July_Day40` | React Router: navigation & routing       | `Nav-routing/` (React 19 + react-router-dom v7)                    |
 | `07-21_July_Day41` | Node.js modules & file system            | `ClassWork/` (modules, `fs` ops), `Hw-Task/` (student CRUD CLI)  |
+| `07-23_July_Day42` | Node.js HTTP & Express.js server         | `Nodejs/` (native `http` module), `ExpressJs/` (Express + MongoDB) |
 
 > Folders are the source of truth — if a folder above exists in the
 > repo, it's documented here.
@@ -108,10 +112,18 @@ flowchart TB
   ```
   Requires [Node.js](https://nodejs.org/) installed.
 
-- **Node.js projects** (`07-21_July_Day41/`):
+- **Node.js projects** (`07-21_July_Day41/`, `07-23_July_Day42/Nodejs/`):
 
   ```bash
-   cd "07-21_July_Day41/ClassWork"    # or Hw-Task/
+   cd "07-21_July_Day41/ClassWork"    # or 07-23_July_Day42/Nodejs/
    npm install
    npm start                         # runs with nodemon
+  ```
+
+- **Express.js projects** (`07-23_July_Day42/ExpressJs/`):
+
+  ```bash
+   cd "07-23_July_Day42/ExpressJs"
+   npm install
+   npm start                         # runs with nodemon on port 3000
   ```
