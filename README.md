@@ -7,7 +7,7 @@ Daily internship tasks and practice assignments in the **MERN stack**
 **1 June 2026 → 31 August 2026**. Each day's work lives in its own folder,
 named `MM-DD_Month_DayN` (e.g. `06-01_June_Day1`, `07-01_July_Day31`).
 
-**Progress:** Day 42 reached · currently in the **Express / Node** phase.
+**Progress:** Day 43 reached · currently in the **Express / Node** phase.
 
 ## Learning path
 
@@ -46,8 +46,11 @@ flowchart TB
   and `Hw-Task/` (CLI student management system with CRUD operations using
   `readline` and `fs`).
 - The `07-23_July_Day42/` folder covers **Node.js & Express.js basics** —
-  `Nodejs/` (native `http` module server) and `ExpressJs/` (Express 5 server
-  with Mongoose MongoDB connection).
+   `Nodejs/` (native `http` module server) and `ExpressJs/` (Express 5 server
+   with Mongoose MongoDB connection).
+- The `07-27_July_Day43/` folder contains a **Book Management App** —
+   `Server/` (Express.js server with Mongoose MongoDB connection, book CRUD
+   API) and an empty `Client/` directory.
 - React projects (`07-01_July_Day31/`) were the first Vite + React 19
   work.
 
@@ -92,6 +95,7 @@ flowchart TB
 | `07-20_July_Day40` | React Router: navigation & routing       | `Nav-routing/` (React 19 + react-router-dom v7)                    |
 | `07-21_July_Day41` | Node.js modules & file system            | `ClassWork/` (modules, `fs` ops), `Hw-Task/` (student CRUD CLI)  |
 | `07-23_July_Day42` | Node.js HTTP & Express.js server         | `Nodejs/` (native `http` module), `ExpressJs/` (Express + MongoDB) |
+| `07-27_July_Day43` | Book Management App (Express + MongoDB)  | `Server/` (Express server, Mongoose model, MongoDB connection), `Client/` |
 
 > Folders are the source of truth — if a folder above exists in the
 > repo, it's documented here.
@@ -120,10 +124,10 @@ flowchart TB
    npm start                         # runs with nodemon
   ```
 
-- **Express.js projects** (`07-23_July_Day42/ExpressJs/`):
+- **Express.js projects** (`07-23_July_Day42/ExpressJs/`, `07-27_July_Day43/Server/`):
 
-  ```bash
-   cd "07-23_July_Day42/ExpressJs"
-   npm install
-   npm start                         # runs with nodemon on port 3000
-  ```
+   ```bash
+    cd "07-23_July_Day42/ExpressJs"   # or 07-27_July_Day43/Server
+    npm install
+    npm start                         # runs with nodemon on port 3000
+   ```
