@@ -7,7 +7,7 @@ Daily internship tasks and practice assignments in the **MERN stack**
 **1 June 2026 → 31 August 2026**. Each day's work lives in its own folder,
 named `MM-DD_Month_DayN` (e.g. `06-01_June_Day1`, `07-01_July_Day31`).
 
-**Progress:** Day 44 reached · currently in the **Express / Node** phase.
+**Progress:** Day 45 reached · currently in the **Express / Node** phase.
 
 ## Learning path
 
@@ -46,60 +46,63 @@ flowchart TB
   and `Hw-Task/` (CLI student management system with CRUD operations using
   `readline` and `fs`).
 - The `07-23_July_Day42/` folder covers **Node.js & Express.js basics** —
-   `Nodejs/` (native `http` module server) and `ExpressJs/` (Express 5 server
-   with Mongoose MongoDB connection).
+  `Nodejs/` (native `http` module server) and `ExpressJs/` (Express 5 server
+  with Mongoose MongoDB connection).
 - The `07-27 & 28_July_Day43/` folder contains a **Book Management App** —
-   `Server/` (Express.js server with Mongoose MongoDB connection, book CRUD
-   API) with `bookController.js` and `bookRouter.js`. The `Client/` directory is empty.
+  `Server/` (Express.js server with Mongoose MongoDB connection, book CRUD
+  API) with `bookController.js` and `bookRouter.js`. The `Client/` directory is empty.
 - The `07-28_July_Day44/` folder covers **Express controllers & routers** —
-   `bookController.js` (request/response logic) and `bookRouter.js` (route definitions)
-   were taught as part of the Day 44 session.
+   `bookController.js` (request/response logic with handler functions) and `bookRouter.js` (route definitions)
+   were taught as part of the Day 44 session, with a focus on handler logic and `addHandler`.
+- The `07-29_July_Day45/` folder covers **delete and display records handler** —
+  handler for deleting records and displaying records was taught as part of the Day 45 session.
 - React projects (`07-01_July_Day31/`) were the first Vite + React 19
   work.
 
 ## Day-wise summary
 
-| Folder               | Focus                                    | Key files                                                            |
-| -------------------- | ---------------------------------------- | -------------------------------------------------------------------- |
-| `06-01_June_Day1`  | HTML & JS basics; IPL team page          | `basic.js`, `index.html`, `Task1.html`                         |
-| `06-02_June_Day2`  | JS variables; bill & login pages         | `variable.js`, `Bill.html`, `Login.html`                       |
-| `06-03_June_Day3`  | HTML markup drills (×5)                 | `Task1`–`Task5.html`                                            |
-| `06-04_June_Day4`  | HTML markup drills (×3)                 | `Task1`–`Task3.html`                                            |
-| `06-05_June_Day5`  | 20 HTML mini-tasks                       | `task1`–`task20.html`                                           |
-| `06-06_June_Day6`  | HTML lists & tables                      | `List-Task1/2.html`, `Table-Task3.html`                          |
-| `06-07_June_Day7`  | Web page & generic task                  | `task.html`, `web.html`                                          |
-| `06-08_June_Day8`  | JS loops; login & time                   | `loop.js`, `login.html`, `Time.html`                           |
-| `06-09_June_Day9`  | JS number / star patterns                | `Pattern1`–`Pattern10.js`                                       |
-| `06-10_June_Day10` | Git fundamentals (cheat sheet)           | `git-cheat-sheet-education.pdf`                                    |
-| `06-11_June_Day11` | Amazon Lite (clone)                      | `AmazonLite.html`                                                  |
-| `06-12_June_Day12` | DevOps homework                          | `devops-homework-01/`                                              |
-| `06-13_June_Day13` | CSS layouts: Flipkart, profile, shapes   | `flipkart.html`, `Profile.html`, `shapes.html`                 |
-| `06-15_June_Day15` | JS arrays; Todo app                      | `array.js`, `task.js`, `Todo.html`                             |
-| `06-17_June_Day17` | JS objects; product page                 | `obj.js`, `Product.html`                                         |
-| `06-18_June_Day18` | Instagram (clone)                        | `insta.html`                                                       |
-| `06-19_June_Day19` | Forms                                    | `Form.html`                                                        |
-| `06-20_June_Day20` | Netflix (clone)                          | `netflix.html`                                                     |
-| `06-22_June_Day22` | Login form (CSS)                         | `login.html`                                                       |
-| `06-23_June_Day23` | Search & text components                 | `search.html`, `Text.html`                                       |
-| `06-24_June_Day24` | Traffic light (CSS)                      | `traffic.html`                                                     |
-| `06-27_June_Day27` | CSS transitions & spiral animation       | `Transition.html`, `Spiral.html`                                 |
-| `06-28_June_Day28` | Responsive navbar                        | `navbar.html`                                                      |
-| `06-29_June_Day29` | JS destructuring; Portfolio project      | `destructured.js`, `Portfolio/`                                  |
-| `06-30_June_Day30` | JS Promises                              | `promise.js`                                                       |
-| `07-01_July_Day31` | First**React 19 + Vite** projects  | `1st-project/`, `Basic-form/`                                    |
-| `07-04_July_Day32` | CSS Grid layout                          | `grid.html`                                                        |
-| `07-07_July_Day33` | React Netflix clone                      | `Netflix-clone/`                                                   |
-| `07-08_July_Day34` | Props and Components practice            | `Props-Cards/`                                                     |
-| `07-09_July_Day35` | Portfolio rebuilt as a React 19 app      | `Portfolio-React/`                                                 |
-| `07-11_July_Day36` | HTML & CSS chess board (start position)  | `index.html`, `style.css`                                        |
-| `07-13_July_Day37` | React hooks practice: useEffect & useRef | `UseEffect/`, `UseRef-Demo/`                                     |
-| `07-14_July_Day38` | React form & state practice              | `Task-Form/`, `Context-Hook/`, `Form-handle/`, `Form-State/` |
-| `07-15_July_Day39` | Basic vanilla-JS chatbot (Groq API)      | `index.html`, `app.js`, `config.js`, `style.css`             |
-| `07-20_July_Day40` | React Router: navigation & routing       | `Nav-routing/` (React 19 + react-router-dom v7)                    |
-| `07-21_July_Day41` | Node.js modules & file system            | `ClassWork/` (modules, `fs` ops), `Hw-Task/` (student CRUD CLI)  |
-| `07-23_July_Day42` | Node.js HTTP & Express.js server         | `Nodejs/` (native `http` module), `ExpressJs/` (Express + MongoDB) |
-| `07-27_July_Day43` | Book Management App (Express + MongoDB)  | `Server/` (Express server, Mongoose model, MongoDB connection), empty `Client/` |
-| `07-28_July_Day44` | Express controllers & routers (teaching)  | `bookController.js` (request/response logic), `bookRouter.js` (route definitions) |
+| Folder               | Focus                                                         | Key files                                                                                             |
+| -------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `06-01_June_Day1`  | HTML & JS basics; IPL team page                               | `basic.js`, `index.html`, `Task1.html`                                                          |
+| `06-02_June_Day2`  | JS variables; bill & login pages                              | `variable.js`, `Bill.html`, `Login.html`                                                        |
+| `06-03_June_Day3`  | HTML markup drills (×5)                                      | `Task1`–`Task5.html`                                                                             |
+| `06-04_June_Day4`  | HTML markup drills (×3)                                      | `Task1`–`Task3.html`                                                                             |
+| `06-05_June_Day5`  | 20 HTML mini-tasks                                            | `task1`–`task20.html`                                                                            |
+| `06-06_June_Day6`  | HTML lists & tables                                           | `List-Task1/2.html`, `Table-Task3.html`                                                           |
+| `06-07_June_Day7`  | Web page & generic task                                       | `task.html`, `web.html`                                                                           |
+| `06-08_June_Day8`  | JS loops; login & time                                        | `loop.js`, `login.html`, `Time.html`                                                            |
+| `06-09_June_Day9`  | JS number / star patterns                                     | `Pattern1`–`Pattern10.js`                                                                        |
+| `06-10_June_Day10` | Git fundamentals (cheat sheet)                                | `git-cheat-sheet-education.pdf`                                                                     |
+| `06-11_June_Day11` | Amazon Lite (clone)                                           | `AmazonLite.html`                                                                                   |
+| `06-12_June_Day12` | DevOps homework                                               | `devops-homework-01/`                                                                               |
+| `06-13_June_Day13` | CSS layouts: Flipkart, profile, shapes                        | `flipkart.html`, `Profile.html`, `shapes.html`                                                  |
+| `06-15_June_Day15` | JS arrays; Todo app                                           | `array.js`, `task.js`, `Todo.html`                                                              |
+| `06-17_June_Day17` | JS objects; product page                                      | `obj.js`, `Product.html`                                                                          |
+| `06-18_June_Day18` | Instagram (clone)                                             | `insta.html`                                                                                        |
+| `06-19_June_Day19` | Forms                                                         | `Form.html`                                                                                         |
+| `06-20_June_Day20` | Netflix (clone)                                               | `netflix.html`                                                                                      |
+| `06-22_June_Day22` | Login form (CSS)                                              | `login.html`                                                                                        |
+| `06-23_June_Day23` | Search & text components                                      | `search.html`, `Text.html`                                                                        |
+| `06-24_June_Day24` | Traffic light (CSS)                                           | `traffic.html`                                                                                      |
+| `06-27_June_Day27` | CSS transitions & spiral animation                            | `Transition.html`, `Spiral.html`                                                                  |
+| `06-28_June_Day28` | Responsive navbar                                             | `navbar.html`                                                                                       |
+| `06-29_June_Day29` | JS destructuring; Portfolio project                           | `destructured.js`, `Portfolio/`                                                                   |
+| `06-30_June_Day30` | JS Promises                                                   | `promise.js`                                                                                        |
+| `07-01_July_Day31` | First**React 19 + Vite** projects                       | `1st-project/`, `Basic-form/`                                                                     |
+| `07-04_July_Day32` | CSS Grid layout                                               | `grid.html`                                                                                         |
+| `07-07_July_Day33` | React Netflix clone                                           | `Netflix-clone/`                                                                                    |
+| `07-08_July_Day34` | Props and Components practice                                 | `Props-Cards/`                                                                                      |
+| `07-09_July_Day35` | Portfolio rebuilt as a React 19 app                           | `Portfolio-React/`                                                                                  |
+| `07-11_July_Day36` | HTML & CSS chess board (start position)                       | `index.html`, `style.css`                                                                         |
+| `07-13_July_Day37` | React hooks practice: useEffect & useRef                      | `UseEffect/`, `UseRef-Demo/`                                                                      |
+| `07-14_July_Day38` | React form & state practice                                   | `Task-Form/`, `Context-Hook/`, `Form-handle/`, `Form-State/`                                  |
+| `07-15_July_Day39` | Basic vanilla-JS chatbot (Groq API)                           | `index.html`, `app.js`, `config.js`, `style.css`                                              |
+| `07-20_July_Day40` | React Router: navigation & routing                            | `Nav-routing/` (React 19 + react-router-dom v7)                                                     |
+| `07-21_July_Day41` | Node.js modules & file system                                 | `ClassWork/` (modules, `fs` ops), `Hw-Task/` (student CRUD CLI)                                 |
+| `07-23_July_Day42` | Node.js HTTP & Express.js server                              | `Nodejs/` (native `http` module), `ExpressJs/` (Express + MongoDB)                              |
+| `07-27_July_Day43` | Book Management App (Express + MongoDB)                       | `Server/` (Express server, Mongoose model, MongoDB connection), empty `Client/`                   |
+| `07-28_July_Day44` | Express controllers & routers (teaching) — handler in `bookController.js`  | `bookController.js` (request/response logic + handler), `bookRouter.js` (route definitions), `addHandler` |
+| `07-29_July_Day45` | Delete & display records handler                              | `controller.js` (delete & display handler logic), `deleteHandler`, `displayHandler` |
 
 > Folders are the source of truth — if a folder above exists in the
 > repo, it's documented here.
@@ -119,7 +122,6 @@ flowchart TB
    npm run dev                       # Vite dev server
   ```
   Requires [Node.js](https://nodejs.org/) installed.
-
 - **Node.js projects** (`07-21_July_Day41/`, `07-23_July_Day42/Nodejs/`):
 
   ```bash
@@ -127,7 +129,6 @@ flowchart TB
    npm install
    npm start                         # runs with nodemon
   ```
-
 - **Express.js projects** (`07-23_July_Day42/ExpressJs/`, `07-27 & 28_July_Day43/Server/`):
 
    ```bash
@@ -135,3 +136,23 @@ flowchart TB
     npm install
     npm start                         # runs with nodemon on port 3000
    ```
+
+- **MongoDB setup** (required for Express + MongoDB projects):
+
+   1. Create a free cluster at [MongoDB Atlas](https://www.mongodb.com/atlas)
+   2. Create a database user and note the username & password
+   3. Whitelist your IP address (use `0.0.0.0/0` for dev)
+   4. Get your connection string from the Atlas dashboard
+   5. Install Mongoose in the project:
+      ```bash
+      npm install mongoose
+      ```
+   6. Create a `.env` file in the project root with your Atlas URI:
+      ```
+      MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/bookstore
+      ```
+   7. Install dependencies and start:
+      ```bash
+      npm install
+      npm start
+      ```
