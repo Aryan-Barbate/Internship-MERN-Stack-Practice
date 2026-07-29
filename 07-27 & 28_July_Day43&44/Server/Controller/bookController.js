@@ -21,4 +21,17 @@ const handleGetAllBookController = async (req, res) => {
   }
 };
 
-module.exports = { handleAddBookController , handleGetAllBookController};
+const handleDeleteBookController = async (req, res) => {
+  try {
+    const data = req.body
+    const deletedDetails = await Book.deleteOne({_id: data._id})
+ 
+    return res.status(200).json({ Message: " Book Details Deleted successfully"});
+  } catch (err) {
+    return res.status(500).json({ Message: err.message });
+  }
+};
+
+
+
+module.exports = { handleAddBookController , handleGetAllBookController, handleDeleteBookController};
