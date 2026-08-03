@@ -5,7 +5,7 @@ Daily internship tasks and practice assignments in the **MERN stack**
 **1 June 2026 → 31 August 2026**. Each day's work lives in its own folder,
 named `MM-DD_Month_DayN` (e.g. `06-01_June_Day1`, `07-01_July_Day31`).
 
-**Progress:** Day 45 reached · currently in the **Express / Node** phase.  
+**Progress:** Day 46 reached · currently in the **Express / Node** phase. [Updated August 3, 2026: added update handler in server and frontend for book management system]  
 After Day 42 the project work was consolidated into the **Book-Management-System** folder (see below).
 
 ## Learning path
@@ -128,10 +128,11 @@ flowchart TB
 | `07-21_July_Day41` | Node.js modules & file system                                 | `ClassWork/` (modules, `fs` ops), `Hw-Task/` (student CRUD CLI)                                 |
 | `07-23_July_Day42` | Node.js HTTP & Express.js server                              | `Nodejs/` (native `http` module), `ExpressJs/` (Express + MongoDB)                              |
 | **Project start after Day 42** | — | — |
-| `Book-Management-System/` | Consolidated MERN project (Days 43‑45) | `Server/` (Express server, Mongoose model, MongoDB connection), `Client/` (React frontend) |
+| `Book-Management-System/` | Consolidated MERN project (Days 43‑46) | `Server/` (Express server, Mongoose model, MongoDB connection, CRUD handlers for books), `Client/` (React frontend with full CRUD UI) |
 | `07-27_July_Day43` | Book Management App (Express + MongoDB)                       | `Server/` (Express server, Mongoose model, MongoDB connection), empty `Client/`                   |
 | `07-28_July_Day44` | Express controllers & routers (teaching) — handler in bookController.js | `bookController.js` (request/response logic + handler), `bookRouter.js` (route definitions), `addHandler` |
 | `07-29_July_Day45` | Delete & display records handler                              | `controller.js` (delete & display handler logic), `deleteHandler`, `displayHandler`               |
+| `08-03_August_Day46` | Book Management System - Update handler & frontend            | `Server/` (updated book controllers), `Client/` (complete React frontend with full CRUD UI)     |
 
 > Folders are the source of truth — if a folder above exists in the
 > repo, it's documented here.
