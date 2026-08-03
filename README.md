@@ -1,5 +1,3 @@
-upda
-
 # Internship — MERN Stack Daily Practice
 
 Daily internship tasks and practice assignments in the **MERN stack**
@@ -7,7 +5,8 @@ Daily internship tasks and practice assignments in the **MERN stack**
 **1 June 2026 → 31 August 2026**. Each day's work lives in its own folder,
 named `MM-DD_Month_DayN` (e.g. `06-01_June_Day1`, `07-01_July_Day31`).
 
-**Progress:** Day 45 reached · currently in the **Express / Node** phase.
+**Progress:** Day 45 reached · currently in the **Express / Node** phase.  
+After Day 42 the project work was consolidated into the **Book-Management-System** folder (see below).
 
 ## Learning path
 
@@ -29,35 +28,63 @@ flowchart TB
 ## Repository structure
 
 - **Day folders** — `06-01_June_Day1/`, `06-02_June_Day2/`, …,
-  `07-23_July_Day42/` — one per working day. Each holds the day's HTML,
-  JS, images, or project files.
-- Some calendar days have **no folder** (Days 14, 16, 21, 25, 26) —
-  weekend / rest days, so nothing was committed those dates.
-- The most recent folder, `07-14_July_Day38/`, contains four React practice
-  projects — `Task-Form/`, `Context-Hook/`, `Form-handle/`, and
-  `Form-State/`.
-- The `07-15_July_Day39/` folder is a standalone **vanilla JS chatbot**
-  that talks to the Groq API. It needs a key set in `config.js`
-  (`window.CHATBOT_CONFIG.groqApiKey`).
-- The `07-20_July_Day40/` folder contains a **React Router** practice app
-  (`Nav-routing/`) with a shared navbar and multiple client-side routes.
-- The `07-21_July_Day41/` folder covers **Node.js modules and file system**
-  operations — `ClassWork/` (custom modules, math utilities, `fs` read/write)
-  and `Hw-Task/` (CLI student management system with CRUD operations using
-  `readline` and `fs`).
-- The `07-23_July_Day42/` folder covers **Node.js & Express.js basics** —
-  `Nodejs/` (native `http` module server) and `ExpressJs/` (Express 5 server
-  with Mongoose MongoDB connection).
-- The `07-27 & 28_July_Day43/` folder contains a **Book Management App** —
-  `Server/` (Express.js server with Mongoose MongoDB connection, book CRUD
-  API) with `bookController.js` and `bookRouter.js`. The `Client/` directory is empty.
-- The `07-28_July_Day44/` folder covers **Express controllers & routers** —
-   `bookController.js` (request/response logic with handler functions) and `bookRouter.js` (route definitions)
-   were taught as part of the Day 44 session, with a focus on handler logic and `addHandler`.
-- The `07-29_July_Day45/` folder covers **delete and display records handler** —
-  handler for deleting records and displaying records was taught as part of the Day 45 session.
-- React projects (`07-01_July_Day31/`) were the first Vite + React 19
-  work.
+  `07-23_July_Day42/` — one per day, named `MM-DD_Month_DayN`.
+- **Book-Management-System/** — the cumulative MERN project built after
+  Day 42, containing the full Express/Node/MongoDB/React application
+  (controllers, models, routes, frontend, etc.).
+- **How to open / run** — see sections below.
+
+## How to open / run
+
+- **Static HTML pages** (most days, incl. `07-15_July_Day39/`): just open
+  the `.html` file in any browser. For the chatbot, first add your key to
+  `config.js` (`window.CHATBOT_CONFIG.groqApiKey`), then open `index.html`.
+- **React projects** (`07-01_July_Day31/`, `07-07_July_Day33/`,
+  `07-08_July_Day34/`, `07-09_July_Day35/`, `07-13_July_Day37/`,
+  `07-14_July_Day38/`, `07-20_July_Day40/`):
+
+  ```bash
+   cd "07-20_July_Day40/Nav-routing"   # or any other React folder
+   npm install
+   npm run dev                       # Vite dev server
+  ```
+  Requires [Node.js](https://nodejs.org/) installed.
+- **Node.js projects** (`07-21_July_Day41/`, `07-23_July_Day42/Nodejs/`):
+
+  ```bash
+   cd "07-21_July_Day41/ClassWork"    # or 07-23_July_Day42/Nodejs/
+   npm install
+   npm start                         # runs with nodemon
+  ```
+- **Express.js projects** (`07-23_July_Day42/ExpressJs/`,
+  `07-27 & 28_July_Day43/Server/`,
+  `Book-Management-System/Server/`):
+
+  ```bash
+   cd "07-23_July_Day42/ExpressJs"   # or 07-27 & 28_July_Day43/Server
+                                      # or Book-Management-System/Server
+   npm install
+   npm start                         # runs with nodemon on port 3000
+  ```
+- **MongoDB setup** (required for Express + MongoDB projects):
+
+  1. Create a free cluster at [MongoDB Atlas](https://www.mongodb.com/atlas)
+  2. Create a database user and note the username & password
+  3. Whitelist your IP address (use `0.0.0.0/0` for dev)
+  4. Get your connection string from the Atlas dashboard
+  5. Install Mongoose in the project:
+     ```bash
+     npm install mongoose
+     ```
+  6. Create a `.env` file in the project root with your Atlas URI:
+     ```
+     MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/bookstore
+     ```
+  7. Install dependencies and start:
+     ```bash
+     npm install
+     npm start
+     ```
 
 ## Day-wise summary
 
@@ -100,59 +127,11 @@ flowchart TB
 | `07-20_July_Day40` | React Router: navigation & routing                            | `Nav-routing/` (React 19 + react-router-dom v7)                                                     |
 | `07-21_July_Day41` | Node.js modules & file system                                 | `ClassWork/` (modules, `fs` ops), `Hw-Task/` (student CRUD CLI)                                 |
 | `07-23_July_Day42` | Node.js HTTP & Express.js server                              | `Nodejs/` (native `http` module), `ExpressJs/` (Express + MongoDB)                              |
+| **Project start after Day 42** | — | — |
+| `Book-Management-System/` | Consolidated MERN project (Days 43‑45) | `Server/` (Express server, Mongoose model, MongoDB connection), `Client/` (React frontend) |
 | `07-27_July_Day43` | Book Management App (Express + MongoDB)                       | `Server/` (Express server, Mongoose model, MongoDB connection), empty `Client/`                   |
-| `07-28_July_Day44` | Express controllers & routers (teaching) — handler in `bookController.js`  | `bookController.js` (request/response logic + handler), `bookRouter.js` (route definitions), `addHandler` |
-| `07-29_July_Day45` | Delete & display records handler                              | `controller.js` (delete & display handler logic), `deleteHandler`, `displayHandler` |
+| `07-28_July_Day44` | Express controllers & routers (teaching) — handler in bookController.js | `bookController.js` (request/response logic + handler), `bookRouter.js` (route definitions), `addHandler` |
+| `07-29_July_Day45` | Delete & display records handler                              | `controller.js` (delete & display handler logic), `deleteHandler`, `displayHandler`               |
 
 > Folders are the source of truth — if a folder above exists in the
 > repo, it's documented here.
-
-## How to open / run
-
-- **Static HTML pages** (most days, incl. `07-15_July_Day39/`): just open
-  the `.html` file in any browser. For the chatbot, first add your key to
-  `config.js` (`window.CHATBOT_CONFIG.groqApiKey`), then open `index.html`.
-- **React projects** (`07-01_July_Day31/`, `07-07_July_Day33/`,
-  `07-08_July_Day34/`, `07-09_July_Day35/`, `07-13_July_Day37/`,
-  `07-14_July_Day38/`, `07-20_July_Day40/`):
-
-  ```bash
-   cd "07-20_July_Day40/Nav-routing"   # or any other React folder
-   npm install
-   npm run dev                       # Vite dev server
-  ```
-  Requires [Node.js](https://nodejs.org/) installed.
-- **Node.js projects** (`07-21_July_Day41/`, `07-23_July_Day42/Nodejs/`):
-
-  ```bash
-   cd "07-21_July_Day41/ClassWork"    # or 07-23_July_Day42/Nodejs/
-   npm install
-   npm start                         # runs with nodemon
-  ```
-- **Express.js projects** (`07-23_July_Day42/ExpressJs/`, `07-27 & 28_July_Day43/Server/`):
-
-   ```bash
-    cd "07-23_July_Day42/ExpressJs"   # or 07-27 & 28_July_Day43/Server
-    npm install
-    npm start                         # runs with nodemon on port 3000
-   ```
-
-- **MongoDB setup** (required for Express + MongoDB projects):
-
-   1. Create a free cluster at [MongoDB Atlas](https://www.mongodb.com/atlas)
-   2. Create a database user and note the username & password
-   3. Whitelist your IP address (use `0.0.0.0/0` for dev)
-   4. Get your connection string from the Atlas dashboard
-   5. Install Mongoose in the project:
-      ```bash
-      npm install mongoose
-      ```
-   6. Create a `.env` file in the project root with your Atlas URI:
-      ```
-      MONGODB_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/bookstore
-      ```
-   7. Install dependencies and start:
-      ```bash
-      npm install
-      npm start
-      ```
