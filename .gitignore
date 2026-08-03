@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Book Management System specific files
+Book-Management-System/CLAUDE.md
+Book-Management-System/DESIGN-wise.md
+task.tldr
