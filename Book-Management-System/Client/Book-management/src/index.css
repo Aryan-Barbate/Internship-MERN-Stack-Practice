@@ -1,0 +1,281 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   WISE DESIGN SYSTEM — Theme System
+   Light: Wise Sage Magazine (#e8ebe6 + #ffffff + #9fe870)
+   Dark:  Midnight Forest Ink (#0e0f0c + #161a14 + #9fe870)
+   ========================================================================== */
+
+:root, [data-theme="light"] {
+  --bg-page: #e8ebe6;
+  --bg-card: #ffffff;
+  --bg-card-sage: #e8ebe6;
+  --bg-card-hover: #ffffff;
+  --bg-sage-panel: #e8ebe6;
+  
+  --text-ink: #0e0f0c;
+  --text-body: #454745;
+  --text-mute: #6b6b6a;
+  
+  --border-color: rgba(14, 15, 12, 0.1);
+  
+  --primary-accent: #9fe870;
+  --primary-on-accent: #0e0f0c;
+  --primary-pale: #e2f6d5;
+  --primary-deep: #163300;
+
+  --badge-sage-bg: #e8ebe6;
+  --badge-sage-text: #0e0f0c;
+
+  --input-bg: #ffffff;
+  --modal-bg: #ffffff;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+}
+
+[data-theme="dark"] {
+  /* Midnight Forest Dark — Perfect compliment to Wise Sage */
+  --bg-page: #0e0f0c;
+  --bg-card: #161a14;
+  --bg-card-sage: #1d241b;
+  --bg-card-hover: #222c1f;
+  --bg-sage-panel: #1d241b;
+
+  --text-ink: #f2f5ef;
+  --text-body: #a3ab9d;
+  --text-mute: #6f7869;
+
+  --border-color: rgba(255, 255, 255, 0.08);
+
+  --primary-accent: #9fe870;
+  --primary-on-accent: #0e0f0c;
+  --primary-pale: rgba(159, 232, 112, 0.16);
+  --primary-deep: #9fe870;
+
+  --badge-sage-bg: #1d241b;
+  --badge-sage-text: #e2e8de;
+
+  --input-bg: #161a14;
+  --modal-bg: #161a14;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-mute);
+  border-radius: var(--radius-pill);
+  opacity: 0.5;
+}
+
+/* ==========================================================================
+   TYPOGRAPHY UTILITIES
+   ========================================================================== */
+.body-lg {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+.body-md {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-body);
+}
+
+.body-sm {
+  font-size: 0.875rem;
+  line-height: 1.43;
+  color: var(--text-body);
+}
+
+.body-sm-strong {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-ink);
+}
+
+.caption {
+  font-size: 0.75rem;
+  line-height: 1.33;
+  color: var(--text-mute);
+}
+
+/* ==========================================================================
+   WISE COMPONENTS & THEMING
+   ========================================================================== */
+
+/* Cards */
+.wise-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
+  transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.wise-card-hover:hover {
+  background-color: var(--bg-card-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.25);
+}
+
+.wise-card-sage {
+  background-color: var(--bg-card-sage);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.25s ease;
+}
+
+/* Buttons */
+.wise-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-xl);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s cubic-bezier(0.2, 0, 0, 1);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.wise-btn:active {
+  transform: scale(0.97);
+}
+
+.wise-btn-primary {
+  background-color: var(--primary-accent);
+  color: var(--primary-on-accent);
+  border-color: var(--primary-accent);
+}
+
+.wise-btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.wise-btn-secondary {
+  background-color: var(--bg-card-sage);
+  color: var(--text-ink);
+  border-color: var(--border-color);
+}
+
+.wise-btn-secondary:hover {
+  opacity: 0.85;
+}
+
+.wise-btn-tertiary {
+  background-color: var(--bg-card);
+  color: var(--text-ink);
+  border-color: var(--border-color);
+}
+
+.wise-btn-tertiary:hover {
+  background-color: var(--bg-card-sage);
+}
+
+.wise-btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: var(--radius-lg);
+}
+
+/* Inputs */
+.wise-input {
+  width: 100%;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 1rem;
+  color: var(--text-ink);
+  background-color: var(--input-bg);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: all 0.15s ease;
+  box-sizing: border-box;
+}
+
+.wise-input-has-icon {
+  padding-left: 2.75rem !important;
+}
+
+.wise-input:focus {
+  outline: none;
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 0 3px rgba(159, 232, 112, 0.4);
+}
+
+.wise-input::placeholder {
+  color: var(--text-mute);
+}
+
+/* Badges */
+.wise-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+}
+
+.wise-badge-green {
+  background-color: var(--primary-pale);
+  color: var(--primary-deep);
+}
+
+.wise-badge-sage {
+  background-color: var(--badge-sage-bg);
+  color: var(--badge-sage-text);
+  border: 1px solid var(--border-color);
+}
+
+/* Animations */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.25s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.2s cubic-bezier(0.2, 0, 0, 1) forwards;
+}
