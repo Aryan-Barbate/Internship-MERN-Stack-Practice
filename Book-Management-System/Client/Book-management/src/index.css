@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:is([data-theme="dark"], [data-theme="dark"] *));
+
 /* ==========================================================================
    NEUBRUTALISM DESIGN SYSTEM
    ========================================================================== */

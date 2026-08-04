@@ -42,7 +42,7 @@ const BookList = ({
         <div className="flex flex-col md:flex-row items-center gap-4">
           {/* Search bar */}
           <div className="relative flex-1 w-full">
-            <Search className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-black pointer-events-none z-10 stroke-[2.5]" />
+            <Search className="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-black pointer-events-none z-10 stroke-2.5" />
             <input
               type="text"
               placeholder="SEARCH TITLE, AUTHOR, OR SUMMARY..."
@@ -56,7 +56,7 @@ const BookList = ({
                 className="absolute right-3 top-1/2 -translate-y-1/2 nb-badge nb-badge-pink cursor-pointer"
                 title="Clear Search"
               >
-                <X className="w-3.5 h-3.5 stroke-[3]" />
+                <X className="w-3.5 h-3.5 stroke-3" />
                 <span>CLEAR</span>
               </button>
             )}
@@ -65,11 +65,11 @@ const BookList = ({
           {/* Controls: Sort & Layout */}
           <div className="flex items-center gap-3 w-full md:w-auto justify-between md:justify-end">
             <div className="flex items-center gap-2">
-              <SlidersHorizontal className="w-5 h-5 stroke-[2.5]" />
+              <SlidersHorizontal className="w-5 h-5 stroke-2.5" />
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="nb-input py-2 px-3 text-xs font-black uppercase min-w-[150px] cursor-pointer"
+                className="nb-input py-2 px-3 text-xs font-black uppercase min-w-37.5 cursor-pointer"
               >
                 <option value="title-asc">Title (A-Z)</option>
                 <option value="title-desc">Title (Z-A)</option>
@@ -85,25 +85,25 @@ const BookList = ({
             <div className="flex items-center p-1 bg-black/10 dark:bg-white/10 rounded-xl border-2 border-black">
               <button
                 onClick={() => setViewMode('grid')}
-                className={`p-2 rounded-lg border-2 border-black transition-all cursor-pointer ${
+                className={`p-2 rounded-lg border-2 transition-all cursor-pointer ${
                   viewMode === 'grid'
-                    ? 'bg-[#CCFF00] text-black shadow-[2px_2px_0px_0px_#000]'
-                    : 'bg-transparent text-black dark:text-white border-transparent'
+                    ? 'bg-[#CCFF00] text-black border-black shadow-[2px_2px_0px_0px_#000]'
+                    : 'bg-white dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20 hover:bg-[#FFDE59] hover:border-black'
                 }`}
                 title="Grid View"
               >
-                <LayoutGrid className="w-4 h-4 stroke-[2.5]" />
+                <LayoutGrid className="w-4 h-4 stroke-2.5" />
               </button>
               <button
                 onClick={() => setViewMode('list')}
-                className={`p-2 rounded-lg border-2 border-black transition-all cursor-pointer ${
+                className={`p-2 rounded-lg border-2 transition-all cursor-pointer ${
                   viewMode === 'list'
-                    ? 'bg-[#CCFF00] text-black shadow-[2px_2px_0px_0px_#000]'
-                    : 'bg-transparent text-black dark:text-white border-transparent'
+                    ? 'bg-[#CCFF00] text-black border-black shadow-[2px_2px_0px_0px_#000]'
+                    : 'bg-white dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20 hover:bg-[#FFDE59] hover:border-black'
                 }`}
                 title="List View"
               >
-                <List className="w-4 h-4 stroke-[2.5]" />
+                <List className="w-4 h-4 stroke-2.5" />
               </button>
             </div>
           </div>
@@ -153,7 +153,7 @@ const BookList = ({
       {books.length === 0 && (
         <div className="nb-card nb-card-yellow p-10 text-center my-8">
           <div className="w-16 h-16 rounded-xl bg-black text-[#CCFF00] border-3 border-black flex items-center justify-center mx-auto mb-4 shadow-[4px_4px_0px_0px_#000]">
-            <BookX className="w-8 h-8 stroke-[2.5]" />
+            <BookX className="w-8 h-8 stroke-2.5" />
           </div>
           <h3 className="text-2xl font-black mb-2 uppercase">NO MATCHING BOOKS FOUND</h3>
           <p className="text-sm font-bold text-black/80 max-w-sm mx-auto mb-6">

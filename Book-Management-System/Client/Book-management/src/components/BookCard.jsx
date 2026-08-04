@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Star, Edit3, Trash2, Heart, Calendar, BookOpen } from 'lucide-react';
 
 const formatDate = (dateStr) => {
@@ -38,11 +39,12 @@ const FavoriteButton = ({ isFavorite, onClick }) => (
     }`}
     title={isFavorite ? 'Remove Favorite' : 'Mark Favorite'}
   >
-    <Heart className={`w-5 h-5 ${isFavorite ? 'fill-white text-white' : 'text-black stroke-[2.5]'}`} />
+    <Heart className={`w-5 h-5 ${isFavorite ? 'fill-white text-white' : 'text-black stroke-2.5'}`} />
   </button>
 );
 
-const BookCard = ({ book, viewMode = 'grid', onEdit, onDelete, onToggleFavorite }) => {
+const BookCard = ({ book, viewMode = 'grid', onDelete, onToggleFavorite }) => {
+  const navigate = useNavigate();
   const bookId = book._id || book.id;
   const formattedPrice = `$${Number(book.bookPrice || 0).toFixed(2)}`;
   const bookAge = getBookAge(book.publishDate);
@@ -53,7 +55,7 @@ const BookCard = ({ book, viewMode = 'grid', onEdit, onDelete, onToggleFavorite 
       <div className="nb-card nb-card-hover p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4 min-w-0 flex-1">
           <div className="w-12 h-14 rounded-lg bg-[#CCFF00] text-black border-2 border-black flex items-center justify-center font-black shrink-0 shadow-[2px_2px_0px_0px_#000]">
-            <BookOpen className="w-6 h-6 stroke-[2.5]" />
+            <BookOpen className="w-6 h-6 stroke-2.5" />
           </div>
 
           <div className="min-w-0 flex-1">
@@ -82,11 +84,11 @@ const BookCard = ({ book, viewMode = 'grid', onEdit, onDelete, onToggleFavorite 
 
             <button
               type="button"
-              onClick={() => onEdit(book)}
+              onClick={() => navigate(`/edit/${bookId}`)}
               className="nb-btn nb-btn-cyan nb-btn-sm"
               title="Edit Book"
             >
-              <Edit3 className="w-4 h-4 stroke-[2.5]" />
+              <Edit3 className="w-4 h-4 stroke-2.5" />
               <span>EDIT</span>
             </button>
 
@@ -96,7 +98,7 @@ const BookCard = ({ book, viewMode = 'grid', onEdit, onDelete, onToggleFavorite 
               className="nb-btn nb-btn-white nb-btn-sm text-[#FF4D4D]"
               title="Delete Book"
             >
-              <Trash2 className="w-4 h-4 stroke-[2.5]" />
+              <Trash2 className="w-4 h-4 stroke-2.5" />
             </button>
           </div>
         </div>
@@ -139,7 +141,7 @@ const BookCard = ({ book, viewMode = 'grid', onEdit, onDelete, onToggleFavorite 
           </span>
 
           <div className="nb-badge nb-badge-yellow px-2.5 py-1">
-            <Star className="w-3.5 h-3.5 fill-black text-black stroke-[2.5]" />
+            <Star className="w-3.5 h-3.5 fill-black text-black stroke-2.5" />
             <span>{book.rating || 5} / 5</span>
           </div>
         </div>
@@ -147,7 +149,7 @@ const BookCard = ({ book, viewMode = 'grid', onEdit, onDelete, onToggleFavorite 
         {/* Footer info & Buttons */}
         <div className="flex items-center justify-between text-xs font-extrabold opacity-70 mb-4">
           <span className="flex items-center gap-1">
-            <Calendar className="w-3.5 h-3.5 stroke-[2.5]" />
+            <Calendar className="w-3.5 h-3.5 stroke-2.5" />
             {formatDate(book.publishDate)}
           </span>
           <span>{bookAge}</span>
@@ -156,10 +158,10 @@ const BookCard = ({ book, viewMode = 'grid', onEdit, onDelete, onToggleFavorite 
         <div className="flex gap-2">
           <button
             type="button"
-            onClick={() => onEdit(book)}
+            onClick={() => navigate(`/edit/${bookId}`)}
             className="nb-btn nb-btn-cyan nb-btn-sm flex-1"
           >
-            <Edit3 className="w-3.5 h-3.5 stroke-[2.5]" />
+            <Edit3 className="w-3.5 h-3.5 stroke-2.5" />
             <span>EDIT</span>
           </button>
 
@@ -169,7 +171,7 @@ const BookCard = ({ book, viewMode = 'grid', onEdit, onDelete, onToggleFavorite 
             className="nb-btn nb-btn-white nb-btn-sm text-[#FF4D4D]"
             title="Delete Book"
           >
-            <Trash2 className="w-3.5 h-3.5 stroke-[2.5]" />
+            <Trash2 className="w-3.5 h-3.5 stroke-2.5" />
             <span>DELETE</span>
           </button>
         </div>

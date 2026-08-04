@@ -26,7 +26,7 @@ const Stats = ({ books }) => {
       label: 'COLLECTION SIZE',
       value: `${totalBooks} ${totalBooks === 1 ? 'BOOK' : 'BOOKS'}`,
       subtext: 'Total items in library',
-      icon: <BookOpen className="w-5 h-5 text-black stroke-[2.5]" />,
+      icon: <BookOpen className="w-5 h-5 text-black stroke-2.5" />,
       badgeBg: 'bg-[#FFDE59]'
     },
     {
@@ -34,7 +34,7 @@ const Stats = ({ books }) => {
       label: 'VALUATION TOTAL',
       value: `$${totalValue.toFixed(2)}`,
       subtext: `Avg $${avgPrice.toFixed(2)} / book`,
-      icon: <DollarSign className="w-5 h-5 text-black stroke-[2.5]" />,
+      icon: <DollarSign className="w-5 h-5 text-black stroke-2.5" />,
       badgeBg: 'bg-[#CCFF00]'
     },
     {
@@ -42,7 +42,7 @@ const Stats = ({ books }) => {
       label: 'TOP CATEGORY',
       value: topGenre.toUpperCase(),
       subtext: `${maxCount} ${maxCount === 1 ? 'title' : 'titles'} stored`,
-      icon: <Tag className="w-5 h-5 text-black stroke-[2.5]" />,
+      icon: <Tag className="w-5 h-5 text-black stroke-2.5" />,
       badgeBg: 'bg-[#00E5FF]'
     },
     {
@@ -50,7 +50,7 @@ const Stats = ({ books }) => {
       label: 'FAVORITES',
       value: `${favoritesCount} SAVED`,
       subtext: 'Bookmarked titles',
-      icon: <Heart className="w-5 h-5 text-white fill-white stroke-[2.5]" />,
+      icon: <Heart className="w-5 h-5 text-white fill-white stroke-2.5" />,
       badgeBg: 'bg-[#FF4D4D]'
     }
   ];
@@ -59,7 +59,7 @@ const Stats = ({ books }) => {
     <section className="mt-12" aria-label="Collection Statistics">
       <div className="flex items-center gap-2 mb-6">
         <div className="p-2 bg-[#FFDE59] border-2 border-black rounded-lg shadow-[2px_2px_0px_0px_#000]">
-          <Award className="w-5 h-5 text-black stroke-[2.5]" />
+          <Award className="w-5 h-5 text-black stroke-2.5" />
         </div>
         <h2 className="text-2xl font-black uppercase tracking-tight">COLLECTION INSIGHTS</h2>
       </div>
