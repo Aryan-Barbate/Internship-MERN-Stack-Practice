@@ -23,56 +23,58 @@ const Stats = ({ books }) => {
   const STAT_ITEMS = [
     {
       id: 'total',
-      label: 'Collection Size',
-      value: `${totalBooks} ${totalBooks === 1 ? 'Book' : 'Books'}`,
-      subtext: 'Personal library items',
-      icon: <BookOpen className="w-5 h-5 text-[#9fe870]" />,
-      badgeBg: 'bg-[#9fe870]/20'
+      label: 'COLLECTION SIZE',
+      value: `${totalBooks} ${totalBooks === 1 ? 'BOOK' : 'BOOKS'}`,
+      subtext: 'Total items in library',
+      icon: <BookOpen className="w-5 h-5 text-black stroke-[2.5]" />,
+      badgeBg: 'bg-[#FFDE59]'
     },
     {
       id: 'value',
-      label: 'Total Library Value',
+      label: 'VALUATION TOTAL',
       value: `$${totalValue.toFixed(2)}`,
-      subtext: `Avg $${avgPrice.toFixed(2)} per book`,
-      icon: <DollarSign className="w-5 h-5 text-[#2ead4b]" />,
-      badgeBg: 'bg-[#2ead4b]/20'
+      subtext: `Avg $${avgPrice.toFixed(2)} / book`,
+      icon: <DollarSign className="w-5 h-5 text-black stroke-[2.5]" />,
+      badgeBg: 'bg-[#CCFF00]'
     },
     {
       id: 'top-genre',
-      label: 'Top Category',
-      value: topGenre,
-      subtext: `${maxCount} ${maxCount === 1 ? 'title' : 'titles'} in category`,
-      icon: <Tag className="w-5 h-5 text-[#ffd11a]" />,
-      badgeBg: 'bg-[#ffd11a]/20'
+      label: 'TOP CATEGORY',
+      value: topGenre.toUpperCase(),
+      subtext: `${maxCount} ${maxCount === 1 ? 'title' : 'titles'} stored`,
+      icon: <Tag className="w-5 h-5 text-black stroke-[2.5]" />,
+      badgeBg: 'bg-[#00E5FF]'
     },
     {
       id: 'favorites',
-      label: 'Favorites',
-      value: `${favoritesCount} Saved`,
-      subtext: 'Bookmarked classics',
-      icon: <Heart className="w-5 h-5 text-[#d03238]" />,
-      badgeBg: 'bg-[#d03238]/20'
+      label: 'FAVORITES',
+      value: `${favoritesCount} SAVED`,
+      subtext: 'Bookmarked titles',
+      icon: <Heart className="w-5 h-5 text-white fill-white stroke-[2.5]" />,
+      badgeBg: 'bg-[#FF4D4D]'
     }
   ];
 
   return (
     <section className="mt-12" aria-label="Collection Statistics">
       <div className="flex items-center gap-2 mb-6">
-        <Award className="w-5 h-5" />
-        <h2 className="text-2xl font-black tracking-tight">Collection Statistics</h2>
+        <div className="p-2 bg-[#FFDE59] border-2 border-black rounded-lg shadow-[2px_2px_0px_0px_#000]">
+          <Award className="w-5 h-5 text-black stroke-[2.5]" />
+        </div>
+        <h2 className="text-2xl font-black uppercase tracking-tight">COLLECTION INSIGHTS</h2>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {STAT_ITEMS.map((stat) => (
           <article
             key={stat.id}
-            className="wise-card wise-card-hover flex flex-col justify-between"
+            className="nb-card nb-card-hover flex flex-col justify-between p-5"
           >
             <div className="flex items-start justify-between gap-3 mb-4">
-              <span className="caption font-bold uppercase tracking-wider">
+              <span className="text-xs font-black uppercase tracking-wider opacity-75">
                 {stat.label}
               </span>
-              <div className={`p-2.5 rounded-2xl ${stat.badgeBg} shrink-0`}>
+              <div className={`w-10 h-10 border-2 border-black rounded-lg ${stat.badgeBg} shrink-0 flex items-center justify-center shadow-[2px_2px_0px_0px_#000]`}>
                 {stat.icon}
               </div>
             </div>
@@ -81,7 +83,7 @@ const Stats = ({ books }) => {
               <div className="text-2xl font-black tracking-tight mb-1 truncate">
                 {stat.value}
               </div>
-              <p className="caption truncate">
+              <p className="text-xs font-bold opacity-65 truncate">
                 {stat.subtext}
               </p>
             </div>

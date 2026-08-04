@@ -67,24 +67,28 @@ const ToastNotification = ({ toast, onClose }) => {
   const isError = toast.type === 'error';
   const isSuccess = toast.type === 'success';
 
-  const borderColor = isSuccess ? 'border-l-4 border-l-[#2ead4b]' : isError ? 'border-l-4 border-l-[#d03238]' : 'border-l-4 border-l-[#9fe870]';
+  const bgStyle = isSuccess
+    ? 'bg-[#CCFF00] text-black'
+    : isError
+    ? 'bg-[#FF4D4D] text-white'
+    : 'bg-[#00E5FF] text-black';
+
   const Icon = isSuccess ? CheckCircle2 : isError ? AlertCircle : Info;
-  const iconColor = isSuccess ? 'text-[#2ead4b]' : isError ? 'text-[#d03238]' : 'text-[#9fe870]';
 
   return (
-    <div className={`wise-card p-4 shadow-xl border border-black/10 flex items-center gap-3 min-w-[280px] max-w-md ${borderColor} animate-slide-down`}>
-      <Icon className={`w-5 h-5 ${iconColor} shrink-0`} />
-      <div className="flex-1 body-sm-strong">{toast.message}</div>
+    <div className={`nb-card ${bgStyle} p-4 border-3 border-black shadow-[4px_4px_0px_0px_#000] flex items-center gap-3 min-w-[280px] max-w-md animate-slide-down`}>
+      <Icon className="w-5 h-5 shrink-0 stroke-[2.5]" />
+      <div className="flex-1 text-xs font-black uppercase tracking-wide">{toast.message}</div>
       <button
         type="button"
         onClick={(e) => {
           e.stopPropagation();
           onClose();
         }}
-        className="p-1 rounded opacity-70 hover:opacity-100 transition-opacity cursor-pointer"
+        className="w-6 h-6 rounded-md bg-black text-white flex items-center justify-center cursor-pointer hover:bg-white hover:text-black transition-colors border border-black"
         aria-label="Dismiss notification"
       >
-        <X className="w-4 h-4 shrink-0" />
+        <X className="w-3.5 h-3.5 stroke-[3]" />
       </button>
     </div>
   );
@@ -97,11 +101,11 @@ const App = () => {
   const [sortBy, setSortBy] = useState('title-asc');
   const [viewMode, setViewMode] = useState('grid');
   
-  const [theme, setTheme] = useState(() => localStorage.getItem('wise_book_theme') || 'light');
+  const [theme, setTheme] = useState(() => localStorage.getItem('nb_book_theme') || 'light');
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('wise_book_theme', theme);
+    localStorage.setItem('nb_book_theme', theme);
   }, [theme]);
 
   const handleToggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
@@ -253,8 +257,8 @@ const App = () => {
         <Stats books={books} />
 
         {/* Footer */}
-        <footer className="mt-20 pt-8 border-t border-black/10 text-center caption">
-          <p>© {new Date().getFullYear()} Wise Book Management System • Theme: {theme === 'light' ? 'Wise Sage Magazine' : 'Obsidian Dark'}</p>
+        <footer className="mt-20 pt-8 border-t-3 border-black/10 text-center text-xs font-black uppercase tracking-wider">
+          <p>© {new Date().getFullYear()} BOOK VAULT • MADE WITH LOVE ({theme.toUpperCase()} MODE)</p>
         </footer>
       </main>
 
