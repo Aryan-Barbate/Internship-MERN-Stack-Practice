@@ -17,6 +17,22 @@ const schema = new mongoose.Schema({
     type: Date,
     required: false,
   },
+  genre: {
+    type: String,
+    default: 'General',
+  },
+  rating: {
+    type: Number,
+    default: 5,
+  },
+  description: {
+    type: String,
+    default: '',
+  },
+  isFavorite: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 module.exports = mongoose.model("Book", schema);

@@ -7,6 +7,10 @@ const handleAddBookController = async (req, res) => {
       bookAuthor: req.body.bookAuthor,
       bookPrice: req.body.bookPrice,
       publishDate: req.body.publishDate, // optional
+      genre: req.body.genre,
+      rating: req.body.rating,
+      description: req.body.description,
+      isFavorite: req.body.isFavorite,
     });
 
     const savedBook = await newBook.save();
