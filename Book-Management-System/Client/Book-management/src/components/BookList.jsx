@@ -1,23 +1,15 @@
-import React from 'react';
-import BookCard from './BookCard';
-import { Search, LayoutGrid, List, SlidersHorizontal, BookX, Heart, X } from 'lucide-react';
-
-const GENRE_FILTERS = ['All', 'Favorites', 'Fiction', 'Classic', 'Sci-Fi', 'Dystopian', 'Romance', 'Mystery', 'Non-Fiction'];
-
-const getGenrePillColor = (genre, isSelected) => {
-  if (!isSelected) return 'bg-white text-black hover:bg-[#FFDE59]';
-  switch (genre) {
-    case 'Favorites': return 'bg-[#FF4D4D] text-white';
-    case 'Fiction': return 'bg-[#FFDE59] text-black';
-    case 'Classic': return 'bg-[#FFDE59] text-black';
-    case 'Sci-Fi': return 'bg-[#00E5FF] text-black';
-    case 'Dystopian': return 'bg-[#B197FC] text-black';
-    case 'Romance': return 'bg-[#FF66C4] text-black';
-    case 'Mystery': return 'bg-[#FF914D] text-black';
-    case 'Non-Fiction': return 'bg-[#CCFF00] text-black';
-    default: return 'bg-[#FFDE59] text-black';
-  }
-};
+import React from "react";
+import BookCard from "./BookCard";
+import {
+  Search,
+  LayoutGrid,
+  List,
+  SlidersHorizontal,
+  BookX,
+  Heart,
+  X,
+} from "lucide-react";
+import { GENRE_FILTERS, getGenreColor } from "../constants";
 
 const BookList = ({
   books,
@@ -29,11 +21,10 @@ const BookList = ({
   setSortBy,
   viewMode,
   setViewMode,
-  onEdit,
   onDelete,
   onToggleFavorite,
   onResetFilters,
-  totalBooksCount
+  totalBooksCount,
 }) => {
   return (
     <section className="space-y-6" aria-label="Book Collection">
@@ -52,7 +43,7 @@ const BookList = ({
             />
             {searchQuery && (
               <button
-                onClick={() => setSearchQuery('')}
+                onClick={() => setSearchQuery("")}
                 className="absolute right-3 top-1/2 -translate-y-1/2 nb-badge nb-badge-pink cursor-pointer"
                 title="Clear Search"
               >
@@ -84,22 +75,22 @@ const BookList = ({
             {/* Grid / List toggle */}
             <div className="flex items-center p-1 bg-black/10 dark:bg-white/10 rounded-xl border-2 border-black">
               <button
-                onClick={() => setViewMode('grid')}
+                onClick={() => setViewMode("grid")}
                 className={`p-2 rounded-lg border-2 transition-all cursor-pointer ${
-                  viewMode === 'grid'
-                    ? 'bg-[#CCFF00] text-black border-black shadow-[2px_2px_0px_0px_#000]'
-                    : 'bg-white dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20 hover:bg-[#FFDE59] hover:border-black'
+                  viewMode === "grid"
+                    ? "bg-[#CCFF00] text-black border-black shadow-[2px_2px_0px_0px_#000]"
+                    : "bg-white dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20 hover:bg-[#FFDE59] hover:border-black"
                 }`}
                 title="Grid View"
               >
                 <LayoutGrid className="w-4 h-4 stroke-2.5" />
               </button>
               <button
-                onClick={() => setViewMode('list')}
+                onClick={() => setViewMode("list")}
                 className={`p-2 rounded-lg border-2 transition-all cursor-pointer ${
-                  viewMode === 'list'
-                    ? 'bg-[#CCFF00] text-black border-black shadow-[2px_2px_0px_0px_#000]'
-                    : 'bg-white dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20 hover:bg-[#FFDE59] hover:border-black'
+                  viewMode === "list"
+                    ? "bg-[#CCFF00] text-black border-black shadow-[2px_2px_0px_0px_#000]"
+                    : "bg-white dark:bg-white/10 text-black dark:text-white border-black/20 dark:border-white/20 hover:bg-[#FFDE59] hover:border-black"
                 }`}
                 title="List View"
               >
@@ -113,17 +104,21 @@ const BookList = ({
         <div className="flex items-center gap-2.5 overflow-x-auto pb-1 pt-1 scrollbar-none">
           {GENRE_FILTERS.map((genre) => {
             const isSelected = selectedGenre === genre;
-            const colorClass = getGenrePillColor(genre, isSelected);
+            const colorClass = getGenreColor(genre, isSelected);
             return (
               <button
                 key={genre}
                 onClick={() => setSelectedGenre(genre)}
                 className={`px-4 py-2 rounded-lg text-xs font-black uppercase tracking-wider whitespace-nowrap transition-all border-2 border-black flex items-center gap-2 cursor-pointer ${colorClass} ${
-                  isSelected ? 'shadow-[3px_3px_0px_0px_#000] -translate-y-0.5' : 'shadow-[1.5px_1.5px_0px_0px_#000]'
+                  isSelected
+                    ? "shadow-[3px_3px_0px_0px_#000] -translate-y-0.5"
+                    : "shadow-[1.5px_1.5px_0px_0px_#000]"
                 }`}
               >
-                {genre === 'Favorites' && (
-                  <Heart className={`w-3.5 h-3.5 ${isSelected ? 'fill-white text-white' : 'fill-[#FF4D4D] text-[#FF4D4D]'}`} />
+                {genre === "Favorites" && (
+                  <Heart
+                    className={`w-3.5 h-3.5 ${isSelected ? "fill-white text-white" : "fill-[#FF4D4D] text-[#FF4D4D]"}`}
+                  />
                 )}
                 <span>{genre}</span>
               </button>
@@ -135,11 +130,18 @@ const BookList = ({
       {/* Results Header Count */}
       <div className="flex items-center justify-between px-1">
         <p className="text-sm font-extrabold uppercase">
-          SHOWING <span className="underline font-black">{books.length}</span> OF {totalBooksCount} BOOKS
-          {selectedGenre !== 'All' && <span> IN <span className="nb-badge nb-badge-yellow">{selectedGenre}</span></span>}
+          SHOWING <span className="underline font-black">{books.length}</span>{" "}
+          OF {totalBooksCount} BOOKS
+          {selectedGenre !== "All" && (
+            <span>
+              {" "}
+              IN{" "}
+              <span className="nb-badge nb-badge-yellow">{selectedGenre}</span>
+            </span>
+          )}
         </p>
 
-        {(searchQuery || selectedGenre !== 'All') && (
+        {(searchQuery || selectedGenre !== "All") && (
           <button
             onClick={onResetFilters}
             className="nb-badge nb-badge-white text-xs cursor-pointer hover:bg-[#FFDE59]"
@@ -155,14 +157,14 @@ const BookList = ({
           <div className="w-16 h-16 rounded-xl bg-black text-[#CCFF00] border-3 border-black flex items-center justify-center mx-auto mb-4 shadow-[4px_4px_0px_0px_#000]">
             <BookX className="w-8 h-8 stroke-2.5" />
           </div>
-          <h3 className="text-2xl font-black mb-2 uppercase">NO MATCHING BOOKS FOUND</h3>
+          <h3 className="text-2xl font-black mb-2 uppercase">
+            NO MATCHING BOOKS FOUND
+          </h3>
           <p className="text-sm font-bold text-black/80 max-w-sm mx-auto mb-6">
-            We couldn't find any literature matching your current search filter or genre selection.
+            We couldn't find any literature matching your current search filter
+            or genre selection.
           </p>
-          <button
-            onClick={onResetFilters}
-            className="nb-btn nb-btn-black"
-          >
+          <button onClick={onResetFilters} className="nb-btn nb-btn-black">
             RESET ALL FILTERS
           </button>
         </div>
@@ -172,9 +174,9 @@ const BookList = ({
       {books.length > 0 && (
         <div
           className={
-            viewMode === 'grid'
-              ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'
-              : 'space-y-4'
+            viewMode === "grid"
+              ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              : "space-y-4"
           }
         >
           {books.map((book) => (
@@ -182,7 +184,6 @@ const BookList = ({
               key={book.id}
               book={book}
               viewMode={viewMode}
-              onEdit={onEdit}
               onDelete={onDelete}
               onToggleFavorite={onToggleFavorite}
             />

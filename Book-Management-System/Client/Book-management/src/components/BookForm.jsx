@@ -1,80 +1,100 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { X, BookOpen, User, DollarSign, Calendar, Tag, Star, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  X,
+  BookOpen,
+  User,
+  DollarSign,
+  Calendar,
+  Tag,
+  Star,
+  Sparkles,
+} from "lucide-react";
+import { GENRES } from "../constants";
+import { formatDateForInput } from "../utils/format";
 
-const GENRES = ['Fiction', 'Classic', 'Sci-Fi', 'Dystopian', 'Romance', 'Mystery', 'Non-Fiction'];
-
-const formatDateForInput = (dateStr) => {
-  if (!dateStr) return '';
-  if (typeof dateStr === 'string' && /^\d{4}-\d{2}-\d{2}/.test(dateStr)) {
-    return dateStr.substring(0, 10);
-  }
-  const d = new Date(dateStr);
-  if (isNaN(d.getTime())) return '';
-  return d.toISOString().split('T')[0];
-};
-
-const EditBookPage = ({ books, onSaveBook, addToast }) => {
+const BookForm = ({
+  mode = "add",
+  initialData,
+  onSaveBook,
+  onCancel,
+  addToast,
+}) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const isEdit = mode === "edit";
+
   const [formData, setFormData] = useState({
-    bookName: '',
-    bookAuthor: '',
-    bookPrice: '',
-    publishDate: '',
-    genre: 'Fiction',
+    bookName: "",
+    bookAuthor: "",
+    bookPrice: "",
+    publishDate: "",
+    genre: "Fiction",
     rating: 5,
-    description: ''
+    description: "",
   });
   const [errors, setErrors] = useState({});
-  const [book, setBook] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(isEdit);
 
   useEffect(() => {
-    if (!id) {
-      navigate('/');
+    if (!isEdit) {
+      setIsLoading(false);
       return;
     }
 
-    const findBook = (booksArray) => {
-      return booksArray.find(b => String(b._id || b.id) === String(id));
-    };
+    if (!id && !initialData) {
+      navigate("/");
+      return;
+    }
 
-    const bookData = findBook(books);
+    // Find the book data - initialData comes from props (the books array)
+    const bookData =
+      initialData?.find((b) => String(b._id || b.id) === String(id)) || null;
+
     if (bookData) {
-      setBook(bookData);
       setFormData({
-        bookName: bookData.bookName || '',
-        bookAuthor: bookData.bookAuthor || '',
-        bookPrice: String(bookData.bookPrice || ''),
+        bookName: bookData.bookName || "",
+        bookAuthor: bookData.bookAuthor || "",
+        bookPrice: String(bookData.bookPrice || ""),
         publishDate: formatDateForInput(bookData.publishDate),
-        genre: bookData.genre || 'Fiction',
+        genre: bookData.genre || "Fiction",
         rating: bookData.rating || 5,
-        description: bookData.description || ''
+        description: bookData.description || "",
       });
-    } else {
-      // Book not found, go back to home
-      addToast('Book not found', 'error');
-      navigate('/');
+    } else if (initialData && initialData.length === 0) {
+      addToast?.("Book not found", "error");
+      navigate("/");
+    } else if (!initialData) {
+      addToast?.("Book not found", "error");
+      navigate("/");
     }
     setIsLoading(false);
-  }, [books, id, navigate, addToast]);
+  }, [id, initialData, isEdit, navigate, addToast]);
+
+  const bookDataFromId = initialData?.length
+    ? initialData.find((b) => String(b._id || b.id) === String(id))
+    : null;
 
   const handleChange = (field, value) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (errors[field]) setErrors(prev => ({ ...prev, [field]: '' }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
+    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: "" }));
   };
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.bookName.trim()) newErrors.bookName = 'Title is required';
-    if (!formData.bookAuthor.trim()) newErrors.bookAuthor = 'Author is required';
+    if (!formData.bookName.trim()) newErrors.bookName = "Title is required";
+    if (!formData.bookAuthor.trim())
+      newErrors.bookAuthor = "Author is required";
     if (!formData.bookPrice) {
-      newErrors.bookPrice = 'Price is required';
-    } else if (isNaN(formData.bookPrice) || parseFloat(formData.bookPrice) < 0) {
-      newErrors.bookPrice = 'Enter a valid price';
+      newErrors.bookPrice = "Price is required";
+    } else if (
+      isNaN(formData.bookPrice) ||
+      parseFloat(formData.bookPrice) < 0
+    ) {
+      newErrors.bookPrice = "Enter a valid price";
     }
-    if (!formData.publishDate) newErrors.publishDate = 'Publish date is required';
+    if (!formData.publishDate)
+      newErrors.publishDate = "Publish date is required";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -83,41 +103,48 @@ const EditBookPage = ({ books, onSaveBook, addToast }) => {
     e.preventDefault();
     if (!validate()) return;
 
+    const bookId =
+      initialData?._id || initialData?.id || (isEdit ? id : undefined);
+
     onSaveBook({
       ...formData,
-      id: book.id, // Keep the original ID
-      _id: book._id, // Keep the original _id if it exists
+      id: bookId,
+      _id: bookId,
       bookPrice: parseFloat(formData.bookPrice),
       rating: Number(formData.rating),
-      isFavorite: book.isFavorite // Preserve favorite status
+      isFavorite: initialData?.isFavorite || false,
     });
 
-    navigate('/');
+    onCancel?.();
+    navigate("/");
+  };
+
+  const handleCancel = () => {
+    onCancel?.();
+    navigate("/");
   };
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      <div className="min-h-screen flex flex-col items-center justify-center">
+        <div className="w-12 h-12 border-4 border-[#FFDE59] border-t-transparent rounded-full animate-spin" />
       </div>
     );
   }
 
-  if (!book) {
-    // This case is handled in useEffect, but just in case
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center py-12">
-        <p className="text-center text-lg">Loading...</p>
-      </div>
-    );
-  }
+  const headerTitle = isEdit ? "EDIT BOOK DETAILS" : "ADD NEW BOOK";
+  const headerSubtitle = isEdit
+    ? `Update information for "${formData.bookName || initialData?.bookName || ""}"`
+    : "Enter details to add to your library";
+  const submitLabel = isEdit ? "SAVE CHANGES" : "ADD TO VAULT";
+  const iconColor = isEdit ? "bg-[#FFDE59]" : "bg-black";
 
   return (
     <div className="min-h-screen pb-16 transition-colors duration-200">
       {/* Back-to-home button */}
       <div className="fixed top-4 left-4 z-50">
         <button
-          onClick={() => navigate('/')}
+          onClick={handleCancel}
           className="w-10 h-10 rounded-lg bg-white text-black border-2 border-black flex items-center justify-center font-black shadow-[2px_2px_0px_0px_#000] hover:bg-[#FFDE59] transition-colors"
           title="Go back to library"
         >
@@ -131,17 +158,21 @@ const EditBookPage = ({ books, onSaveBook, addToast }) => {
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 nb-card-yellow border-b-3 border-black rounded-t-lg rounded-b-none">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-black text-[#CCFF00] border-2 border-black shadow-[2px_2px_0px_0px_#000]">
+              <div className="p-2 rounded-lg border-2 border-black shadow-[2px_2px_0px_0px_#000] text-[#CCFF00]">
                 <Sparkles className="w-5 h-5 stroke-2.5" />
               </div>
               <div>
-                <h2 className="text-xl font-black uppercase text-black">EDIT BOOK DETAILS</h2>
-                <p className="text-xs font-bold text-black/80">Update information for "{book.bookName}"</p>
+                <h2 className="text-xl font-black uppercase text-black">
+                  {headerTitle}
+                </h2>
+                <p className="text-xs font-bold text-black/80">
+                  {headerSubtitle}
+                </p>
               </div>
             </div>
 
             <button
-              onClick={() => navigate('/')}
+              onClick={handleCancel}
               className="w-8 h-8 rounded-lg bg-white text-black border-2 border-black flex items-center justify-center font-black shadow-[2px_2px_0px_0px_#000] hover:bg-[#FF4D4D] hover:text-white transition-colors"
               aria-label="Close"
             >
@@ -163,11 +194,15 @@ const EditBookPage = ({ books, onSaveBook, addToast }) => {
                     type="text"
                     placeholder="e.g. The Great Gatsby"
                     value={formData.bookName}
-                    onChange={(e) => handleChange('bookName', e.target.value)}
+                    onChange={(e) => handleChange("bookName", e.target.value)}
                     className="nb-input nb-input-has-icon"
                   />
                 </div>
-                {errors.bookName && <p className="text-xs font-extrabold text-[#FF4D4D] mt-1">{errors.bookName}</p>}
+                {errors.bookName && (
+                  <p className="text-xs font-extrabold text-[#FF4D4D] mt-1">
+                    {errors.bookName}
+                  </p>
+                )}
               </div>
 
               {/* Author */}
@@ -181,11 +216,15 @@ const EditBookPage = ({ books, onSaveBook, addToast }) => {
                     type="text"
                     placeholder="e.g. F. Scott Fitzgerald"
                     value={formData.bookAuthor}
-                    onChange={(e) => handleChange('bookAuthor', e.target.value)}
+                    onChange={(e) => handleChange("bookAuthor", e.target.value)}
                     className="nb-input nb-input-has-icon"
                   />
                 </div>
-                {errors.bookAuthor && <p className="text-xs font-extrabold text-[#FF4D4D] mt-1">{errors.bookAuthor}</p>}
+                {errors.bookAuthor && (
+                  <p className="text-xs font-extrabold text-[#FF4D4D] mt-1">
+                    {errors.bookAuthor}
+                  </p>
+                )}
               </div>
 
               {/* Price */}
@@ -201,25 +240,37 @@ const EditBookPage = ({ books, onSaveBook, addToast }) => {
                     min="0"
                     placeholder="14.99"
                     value={formData.bookPrice}
-                    onChange={(e) => handleChange('bookPrice', e.target.value)}
+                    onChange={(e) => handleChange("bookPrice", e.target.value)}
                     className="nb-input nb-input-has-icon"
                   />
                 </div>
-                {errors.bookPrice && <p className="text-xs font-extrabold text-[#FF4D4D] mt-1">{errors.bookPrice}</p>}
+                {errors.bookPrice && (
+                  <p className="text-xs font-extrabold text-[#FF4D4D] mt-1">
+                    {errors.bookPrice}
+                  </p>
+                )}
               </div>
 
               {/* Genre */}
               <div>
-                <label className="block text-xs font-black uppercase tracking-wider mb-1">Genre</label>
+                <label className="block text-xs font-black uppercase tracking-wider mb-1">
+                  Genre
+                </label>
                 <div className="relative">
                   <Tag className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-black pointer-events-none stroke-2.5 z-10" />
                   <select
                     value={formData.genre}
-                    onChange={(e) => handleChange('genre', e.target.value)}
+                    onChange={(e) => handleChange("genre", e.target.value)}
                     className="nb-input nb-input-has-icon cursor-pointer font-bold"
                   >
-                    {GENRES.map(g => (
-                      <option key={g} value={g} className="bg-white dark:bg-[#1C1C24] text-black dark:text-white">{g}</option>
+                    {GENRES.map((g) => (
+                      <option
+                        key={g}
+                        value={g}
+                        className="bg-white dark:bg-[#1C1C24] text-black dark:text-white"
+                      >
+                        {g}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -235,11 +286,17 @@ const EditBookPage = ({ books, onSaveBook, addToast }) => {
                   <input
                     type="date"
                     value={formData.publishDate}
-                    onChange={(e) => handleChange('publishDate', e.target.value)}
+                    onChange={(e) =>
+                      handleChange("publishDate", e.target.value)
+                    }
                     className="nb-input nb-input-has-icon cursor-pointer"
                   />
                 </div>
-                {errors.publishDate && <p className="text-xs font-extrabold text-[#FF4D4D] mt-1">{errors.publishDate}</p>}
+                {errors.publishDate && (
+                  <p className="text-xs font-extrabold text-[#FF4D4D] mt-1">
+                    {errors.publishDate}
+                  </p>
+                )}
               </div>
 
               {/* Rating */}
@@ -252,14 +309,14 @@ const EditBookPage = ({ books, onSaveBook, addToast }) => {
                     <button
                       key={star}
                       type="button"
-                      onClick={() => handleChange('rating', star)}
+                      onClick={() => handleChange("rating", star)}
                       className="p-1 hover:scale-125 transition-transform cursor-pointer"
                     >
                       <Star
                         className={`w-7 h-7 ${
                           star <= formData.rating
-                            ? 'fill-[#FFDE59] text-black stroke-2.5'
-                            : 'text-black/30 dark:text-white/30 stroke-2'
+                            ? "fill-[#FFDE59] text-black stroke-2.5"
+                            : "text-black/30 dark:text-white/30 stroke-2"
                         }`}
                       />
                     </button>
@@ -269,12 +326,14 @@ const EditBookPage = ({ books, onSaveBook, addToast }) => {
 
               {/* Description */}
               <div className="md:col-span-2">
-                <label className="block text-xs font-black uppercase tracking-wider mb-1">Summary / Notes</label>
+                <label className="block text-xs font-black uppercase tracking-wider mb-1">
+                  Summary / Notes
+                </label>
                 <textarea
                   rows="3"
                   placeholder="Key takeaways or synopsis..."
                   value={formData.description}
-                  onChange={(e) => handleChange('description', e.target.value)}
+                  onChange={(e) => handleChange("description", e.target.value)}
                   className="nb-input resize-none"
                 />
               </div>
@@ -284,16 +343,13 @@ const EditBookPage = ({ books, onSaveBook, addToast }) => {
             <div className="pt-4 border-t-2 border-black/10 flex items-center justify-end gap-3">
               <button
                 type="button"
-                onClick={() => navigate('/')}
+                onClick={handleCancel}
                 className="nb-btn nb-btn-white"
               >
                 CANCEL
               </button>
-              <button
-                type="submit"
-                className="nb-btn nb-btn-yellow"
-              >
-                SAVE CHANGES
+              <button type="submit" className="nb-btn nb-btn-yellow">
+                {submitLabel}
               </button>
             </div>
           </form>
@@ -303,4 +359,4 @@ const EditBookPage = ({ books, onSaveBook, addToast }) => {
   );
 };
 
-export default EditBookPage;
+export default BookForm;

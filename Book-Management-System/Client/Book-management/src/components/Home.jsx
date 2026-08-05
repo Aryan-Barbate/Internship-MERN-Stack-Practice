@@ -1,26 +1,42 @@
-import React, { useState, useMemo } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Header from './Header';
-import BookList from './BookList';
-import Stats from './Stats';
+import React, { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "./Header";
+import BookList from "./BookList";
+import Stats from "./Stats";
 
-const Home = ({ books, onDeleteBook, onToggleFavorite, theme, onToggleTheme }) => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedGenre, setSelectedGenre] = useState('All');
-  const [sortBy, setSortBy] = useState('title-asc');
-  const [viewMode, setViewMode] = useState('grid');
+const sortFns = {
+  "title-asc": (a, b) => (a.bookName || "").localeCompare(b.bookName || ""),
+  "title-desc": (a, b) => (b.bookName || "").localeCompare(a.bookName || ""),
+  "price-low": (a, b) => Number(a.bookPrice || 0) - Number(b.bookPrice || 0),
+  "price-high": (a, b) => Number(b.bookPrice || 0) - Number(a.bookPrice || 0),
+  rating: (a, b) => (b.rating || 0) - (a.rating || 0),
+  newest: (a, b) => new Date(b.publishDate || 0) - new Date(a.publishDate || 0),
+  oldest: (a, b) => new Date(a.publishDate || 0) - new Date(b.publishDate || 0),
+};
+
+const Home = ({
+  books,
+  onDeleteBook,
+  onToggleFavorite,
+  theme,
+  onToggleTheme,
+}) => {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("All");
+  const [sortBy, setSortBy] = useState("title-asc");
+  const [viewMode, setViewMode] = useState("grid");
   const navigate = useNavigate();
 
   const handleOpenAddModal = () => {
-    navigate('/add');
+    navigate("/add");
   };
 
   const filteredAndSortedBooks = useMemo(() => {
     let result = books;
 
-    if (selectedGenre === 'Favorites') {
+    if (selectedGenre === "Favorites") {
       result = result.filter((b) => b.isFavorite);
-    } else if (selectedGenre !== 'All') {
+    } else if (selectedGenre !== "All") {
       result = result.filter((b) => b.genre === selectedGenre);
     }
 
@@ -30,22 +46,12 @@ const Home = ({ books, onDeleteBook, onToggleFavorite, theme, onToggleTheme }) =
         (b) =>
           b.bookName?.toLowerCase().includes(q) ||
           b.bookAuthor?.toLowerCase().includes(q) ||
-          b.description?.toLowerCase().includes(q)
+          b.description?.toLowerCase().includes(q),
       );
     }
 
-    return [...result].sort((a, b) => {
-      switch (sortBy) {
-        case 'title-asc': return (a.bookName || '').localeCompare(b.bookName || '');
-        case 'title-desc': return (b.bookName || '').localeCompare(a.bookName || '');
-        case 'price-low': return Number(a.bookPrice || 0) - Number(b.bookPrice || 0);
-        case 'price-high': return Number(b.bookPrice || 0) - Number(a.bookPrice || 0);
-        case 'rating': return (b.rating || 0) - (a.rating || 0);
-        case 'newest': return new Date(b.publishDate || 0) - new Date(a.publishDate || 0);
-        case 'oldest': return new Date(a.publishDate || 0) - new Date(b.publishDate || 0);
-        default: return 0;
-      }
-    });
+    const sortFn = sortFns[sortBy] || sortFns["title-asc"];
+    return [...result].sort(sortFn);
   }, [books, selectedGenre, searchQuery, sortBy]);
 
   const totalValue = useMemo(() => {
@@ -53,9 +59,9 @@ const Home = ({ books, onDeleteBook, onToggleFavorite, theme, onToggleTheme }) =
   }, [books]);
 
   const handleResetFilters = () => {
-    setSearchQuery('');
-    setSelectedGenre('All');
-    setSortBy('title-asc');
+    setSearchQuery("");
+    setSelectedGenre("All");
+    setSortBy("title-asc");
   };
 
   return (

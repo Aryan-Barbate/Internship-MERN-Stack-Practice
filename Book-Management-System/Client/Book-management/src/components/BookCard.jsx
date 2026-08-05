@@ -1,32 +1,7 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Star, Edit3, Trash2, Heart, Calendar, BookOpen } from 'lucide-react';
-
-const formatDate = (dateStr) => {
-  if (!dateStr) return '';
-  const d = new Date(dateStr);
-  return isNaN(d.getTime()) ? dateStr : d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-};
-
-const getBookAge = (dateStr) => {
-  if (!dateStr) return '';
-  const year = new Date(dateStr).getFullYear();
-  if (isNaN(year)) return '';
-  const diff = new Date().getFullYear() - year;
-  return diff <= 0 ? 'New Release' : `${diff} yr${diff > 1 ? 's' : ''} old`;
-};
-
-const getGenreBadgeClass = (genre) => {
-  switch (genre?.toLowerCase()) {
-    case 'classic': return 'nb-badge-yellow';
-    case 'sci-fi': return 'nb-badge-cyan';
-    case 'dystopian': return 'nb-badge-purple';
-    case 'romance': return 'nb-badge-pink';
-    case 'mystery': return 'nb-badge-orange';
-    case 'non-fiction': return 'nb-badge-lime';
-    default: return 'nb-badge-white';
-  }
-};
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Star, Edit3, Trash2, Heart, Calendar, BookOpen } from "lucide-react";
+import { formatDate, getBookAge, getGenreBadgeClass } from "../utils/format";
 
 const FavoriteButton = ({ isFavorite, onClick }) => (
   <button
@@ -34,23 +9,25 @@ const FavoriteButton = ({ isFavorite, onClick }) => (
     onClick={onClick}
     className={`w-9 h-9 rounded-lg border-2 border-black flex items-center justify-center transition-all cursor-pointer ${
       isFavorite
-        ? 'bg-[#FF4D4D] text-white shadow-[2px_2px_0px_0px_#000]'
-        : 'bg-white hover:bg-[#FFDE59] text-black shadow-[2px_2px_0px_0px_#000]'
+        ? "bg-[#FF4D4D] text-white shadow-[2px_2px_0px_0px_#000]"
+        : "bg-white hover:bg-[#FFDE59] text-black shadow-[2px_2px_0px_0px_#000]"
     }`}
-    title={isFavorite ? 'Remove Favorite' : 'Mark Favorite'}
+    title={isFavorite ? "Remove Favorite" : "Mark Favorite"}
   >
-    <Heart className={`w-5 h-5 ${isFavorite ? 'fill-white text-white' : 'text-black stroke-2.5'}`} />
+    <Heart
+      className={`w-5 h-5 ${isFavorite ? "fill-white text-white" : "text-black stroke-2.5"}`}
+    />
   </button>
 );
 
-const BookCard = ({ book, viewMode = 'grid', onDelete, onToggleFavorite }) => {
+const BookCard = ({ book, viewMode = "grid", onDelete, onToggleFavorite }) => {
   const navigate = useNavigate();
   const bookId = book._id || book.id;
   const formattedPrice = `$${Number(book.bookPrice || 0).toFixed(2)}`;
   const bookAge = getBookAge(book.publishDate);
   const badgeClass = getGenreBadgeClass(book.genre);
 
-  if (viewMode === 'list') {
+  if (viewMode === "list") {
     return (
       <div className="nb-card nb-card-hover p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex items-center gap-4 min-w-0 flex-1">
@@ -60,13 +37,18 @@ const BookCard = ({ book, viewMode = 'grid', onDelete, onToggleFavorite }) => {
 
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 mb-1 flex-wrap">
-              <h3 className="text-lg font-black tracking-tight truncate">{book.bookName}</h3>
+              <h3 className="text-lg font-black tracking-tight truncate">
+                {book.bookName}
+              </h3>
               <span className={`nb-badge ${badgeClass} text-[11px]`}>
-                {book.genre || 'General'}
+                {book.genre || "General"}
               </span>
             </div>
             <p className="text-sm font-semibold opacity-80">
-              by <span className="font-extrabold text-black dark:text-white">{book.bookAuthor}</span>
+              by{" "}
+              <span className="font-extrabold text-black dark:text-white">
+                {book.bookAuthor}
+              </span>
             </p>
           </div>
         </div>
@@ -80,8 +62,10 @@ const BookCard = ({ book, viewMode = 'grid', onDelete, onToggleFavorite }) => {
           </div>
 
           <div className="flex items-center gap-2">
-            <FavoriteButton isFavorite={book.isFavorite} onClick={() => onToggleFavorite(bookId)} />
-
+            <FavoriteButton
+              isFavorite={book.isFavorite}
+              onClick={() => onToggleFavorite(bookId)}
+            />
             <button
               type="button"
               onClick={() => navigate(`/edit/${bookId}`)}
@@ -91,7 +75,6 @@ const BookCard = ({ book, viewMode = 'grid', onDelete, onToggleFavorite }) => {
               <Edit3 className="w-4 h-4 stroke-2.5" />
               <span>EDIT</span>
             </button>
-
             <button
               type="button"
               onClick={() => onDelete(bookId)}
@@ -112,10 +95,12 @@ const BookCard = ({ book, viewMode = 'grid', onDelete, onToggleFavorite }) => {
         {/* Header row: Genre & Favorite */}
         <div className="flex items-center justify-between mb-3">
           <span className={`nb-badge ${badgeClass} text-[11px]`}>
-            {book.genre || 'Fiction'}
+            {book.genre || "Fiction"}
           </span>
-
-          <FavoriteButton isFavorite={book.isFavorite} onClick={() => onToggleFavorite(bookId)} />
+          <FavoriteButton
+            isFavorite={book.isFavorite}
+            onClick={() => onToggleFavorite(bookId)}
+          />
         </div>
 
         {/* Title & Author */}
@@ -123,7 +108,10 @@ const BookCard = ({ book, viewMode = 'grid', onDelete, onToggleFavorite }) => {
           {book.bookName}
         </h3>
         <p className="text-sm font-semibold opacity-80 mb-3">
-          by <span className="font-extrabold text-black dark:text-white">{book.bookAuthor}</span>
+          by{" "}
+          <span className="font-extrabold text-black dark:text-white">
+            {book.bookAuthor}
+          </span>
         </p>
 
         {book.description && (
@@ -139,7 +127,6 @@ const BookCard = ({ book, viewMode = 'grid', onDelete, onToggleFavorite }) => {
           <span className="nb-badge nb-badge-lime font-black text-sm px-3 py-1">
             {formattedPrice}
           </span>
-
           <div className="nb-badge nb-badge-yellow px-2.5 py-1">
             <Star className="w-3.5 h-3.5 fill-black text-black stroke-2.5" />
             <span>{book.rating || 5} / 5</span>

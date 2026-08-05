@@ -1,6 +1,14 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { Plus, BookOpen, Library, DollarSign, Sun, Moon, Zap } from 'lucide-react';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import {
+  Plus,
+  BookOpen,
+  Library,
+  DollarSign,
+  Sun,
+  Moon,
+  Zap,
+} from "lucide-react";
 
 const Header = ({
   bookCount,
@@ -8,7 +16,7 @@ const Header = ({
   theme,
   onToggleTheme,
   showAddButton = true,
-  showStats = true
+  showStats = true,
 }) => {
   return (
     <header className="mb-10 animate-slide-down">
@@ -20,12 +28,16 @@ const Header = ({
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-black text-xl tracking-tight uppercase">BOOK VAULT</span>
+              <span className="font-black text-xl tracking-tight uppercase">
+                BOOK VAULT
+              </span>
               <span className="nb-badge nb-badge-lime text-[11px]">
-                {theme === 'dark' ? 'CYBER' : 'POP LIGHT'}
+                {theme === "dark" ? "CYBER" : "POP LIGHT"}
               </span>
             </div>
-            <p className="text-xs font-bold opacity-75">Personal Literature Dashboard</p>
+            <p className="text-xs font-bold opacity-75">
+              Personal Literature Dashboard
+            </p>
           </div>
         </div>
 
@@ -36,11 +48,11 @@ const Header = ({
               to="/"
               end
               className={({ isActive }) => `
-                nb-btn nb-btn-white nb-btn-sm ${isActive ?
-                  'bg-[#CCFF00] text-black shadow-[2px_2px_0px_0px_#000]' :
-                  'bg-white text-black hover:bg-[#FFDE59]'
-                }`
-              }
+                nb-btn nb-btn-white nb-btn-sm ${
+                  isActive
+                    ? "bg-[#CCFF00] text-black shadow-[2px_2px_0px_0px_#000]"
+                    : "bg-white text-black hover:bg-[#FFDE59]"
+                }`}
             >
               <Library className="w-4 h-4 stroke-2.5" />
               <span>HOME</span>
@@ -50,11 +62,11 @@ const Header = ({
               <NavLink
                 to="/add"
                 className={({ isActive }) => `
-                  nb-btn nb-btn-yellow ${isActive ?
-                    'bg-[#CCFF00] text-black shadow-[2px_2px_0px_0px_#000]' :
-                    ''
-                  }`
-                }
+                  nb-btn nb-btn-yellow ${
+                    isActive
+                      ? "bg-[#CCFF00] text-black shadow-[2px_2px_0px_0px_#000]"
+                      : ""
+                  }`}
               >
                 <Plus className="w-5 h-5 stroke-3" />
                 <span>ADD NEW BOOK</span>
@@ -66,9 +78,9 @@ const Header = ({
           <button
             onClick={onToggleTheme}
             className="nb-btn nb-btn-white nb-btn-sm"
-            title={`Switch to ${theme === 'light' ? 'Cyber Dark' : 'Pop Light'} mode`}
+            title={`Switch to ${theme === "light" ? "Cyber Dark" : "Pop Light"} mode`}
           >
-            {theme === 'light' ? (
+            {theme === "light" ? (
               <>
                 <Moon className="w-4 h-4 text-black stroke-2.5" />
                 <span>CYBER DARK</span>
@@ -100,18 +112,26 @@ const Header = ({
             </h1>
 
             <p className="text-base sm:text-lg font-bold text-black/90 mb-6 max-w-2xl">
-              Organize titles, track reading stats, estimate total collection valuation, and filter literature by genre in style!
+              Organize titles, track reading stats, estimate total collection
+              valuation, and filter literature by genre in style!
             </p>
 
             <div className="flex flex-wrap items-center gap-3">
               <div className="nb-badge nb-badge-white text-sm py-2 px-4">
                 <Library className="w-4 h-4 text-black stroke-2.5" />
-                <span>{bookCount} {bookCount === 1 ? 'BOOK' : 'BOOKS'} TOTAL</span>
+                <span>
+                  {bookCount} {bookCount === 1 ? "BOOK" : "BOOKS"} TOTAL
+                </span>
               </div>
 
               <div className="nb-badge nb-badge-cyan text-sm py-2 px-4">
                 <DollarSign className="w-4 h-4 text-black stroke-2.5" />
-                <span>VALUATION: <strong className="underline">${totalValue.toFixed(2)}</strong></span>
+                <span>
+                  VALUATION:{" "}
+                  <strong className="underline">
+                    ${totalValue.toFixed(2)}
+                  </strong>
+                </span>
               </div>
             </div>
           </div>

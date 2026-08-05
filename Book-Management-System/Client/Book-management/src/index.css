@@ -6,31 +6,32 @@
    NEUBRUTALISM DESIGN SYSTEM
    ========================================================================== */
 
-:root, [data-theme="light"] {
-  --bg-page: #FFFDF5;
-  --bg-card: #FFFFFF;
-  --bg-card-alt: #FFF5E6;
-  --bg-panel: #FFE600;
-  
+:root,
+[data-theme="light"] {
+  --bg-page: #fffdf5;
+  --bg-card: #ffffff;
+  --bg-card-alt: #fff5e6;
+  --bg-panel: #ffe600;
+
   --text-ink: #000000;
-  --text-body: #1F1F1F;
+  --text-body: #1f1f1f;
   --text-mute: #525252;
-  
+
   --border-color: #000000;
   --shadow-color: #000000;
-  
-  --pop-yellow: #FFDE59;
-  --pop-pink: #FF66C4;
-  --pop-cyan: #00E5FF;
-  --pop-lime: #CCFF00;
-  --pop-orange: #FF914D;
-  --pop-purple: #B197FC;
-  --pop-red: #FF4D4D;
-  --pop-green: #38EF7D;
 
-  --input-bg: #FFFFFF;
-  --modal-bg: #FFFFFF;
-  
+  --pop-yellow: #ffde59;
+  --pop-pink: #ff66c4;
+  --pop-cyan: #00e5ff;
+  --pop-lime: #ccff00;
+  --pop-orange: #ff914d;
+  --pop-purple: #b197fc;
+  --pop-red: #ff4d4d;
+  --pop-green: #38ef7d;
+
+  --input-bg: #ffffff;
+  --modal-bg: #ffffff;
+
   --nb-border-width: 3px;
   --nb-radius: 12px;
   --nb-radius-sm: 8px;
@@ -40,35 +41,39 @@
 [data-theme="dark"] {
   /* Cyber Neubrutalism Dark Mode */
   --bg-page: #121216;
-  --bg-card: #1C1C24;
+  --bg-card: #1c1c24;
   --bg-card-alt: #262632;
-  --bg-panel: #2A2A38;
+  --bg-panel: #2a2a38;
 
-  --text-ink: #FFFFFF;
-  --text-body: #E2E8F0;
-  --text-mute: #A0AEC0;
+  --text-ink: #ffffff;
+  --text-body: #e2e8f0;
+  --text-mute: #a0aec0;
 
   --border-color: #000000;
   --shadow-color: #000000;
 
-  --pop-yellow: #FFE600;
-  --pop-pink: #FF3399;
-  --pop-cyan: #00F0FF;
-  --pop-lime: #CCFF00;
-  --pop-orange: #FF7700;
-  --pop-purple: #A855F7;
-  --pop-red: #FF3344;
-  --pop-green: #00FF66;
+  --pop-yellow: #ffe600;
+  --pop-pink: #ff3399;
+  --pop-cyan: #00f0ff;
+  --pop-lime: #ccff00;
+  --pop-orange: #ff7700;
+  --pop-purple: #a855f7;
+  --pop-red: #ff3344;
+  --pop-green: #00ff66;
 
-  --input-bg: #1C1C24;
-  --modal-bg: #1C1C24;
+  --input-bg: #1c1c24;
+  --modal-bg: #1c1c24;
 }
 
 @layer base {
   body {
     background-color: var(--bg-page);
     color: var(--text-ink);
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    font-family:
+      "Plus Jakarta Sans",
+      system-ui,
+      -apple-system,
+      sans-serif;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
@@ -105,7 +110,10 @@
   border: var(--nb-border-width) solid var(--border-color);
   border-radius: var(--nb-radius);
   box-shadow: 4px 4px 0px 0px var(--shadow-color);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.2s ease;
 }
 
 .nb-card-hover {
@@ -162,7 +170,7 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.65rem 1.25rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 800;
   font-size: 0.925rem;
   letter-spacing: 0.025em;
@@ -172,7 +180,10 @@
   box-shadow: 3.5px 3.5px 0px 0px var(--shadow-color);
   cursor: pointer;
   user-select: none;
-  transition: transform 0.1s ease, box-shadow 0.1s ease, background-color 0.15s ease;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease,
+    background-color 0.15s ease;
   white-space: nowrap;
 }
 
@@ -207,13 +218,13 @@
 }
 
 .nb-btn-white {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #000000;
 }
 
 .nb-btn-black {
   background-color: #000000;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .nb-btn-sm {
@@ -247,7 +258,10 @@
   border: 2.5px solid var(--border-color);
   border-radius: var(--nb-radius-sm);
   box-shadow: 3px 3px 0px 0px var(--shadow-color);
-  transition: transform 0.1s ease, box-shadow 0.1s ease, border-color 0.15s ease;
+  transition:
+    transform 0.1s ease,
+    box-shadow 0.1s ease,
+    border-color 0.15s ease;
   box-sizing: border-box;
 }
 
@@ -311,19 +325,31 @@
 }
 
 .nb-badge-white {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   color: #000000;
 }
 
 /* Animations */
 @keyframes nbPop {
-  0% { transform: scale(0.95); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes nbSlideDown {
-  0% { transform: translateY(-12px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  0% {
+    transform: translateY(-12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .animate-pop {

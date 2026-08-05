@@ -1,10 +1,13 @@
 # Plan: Add React Router for Basic Routing
 
 ## Context
+
 The Book Management System is a MERN stack application with a React frontend that currently renders all components (Header, BookList, Stats, BookModal) on a single page without client-side routing. The user has requested to implement basic routing using `react-router-dom` to enable navigation between different views (e.g., home view, add book view, edit book view) using URL paths.
 
 ## Goal
+
 Implement client-side routing in the React frontend to allow users to navigate between:
+
 - Home page (`/`): Displays the book list and statistics.
 - Add Book page (`/add`): Displays a form to add a new book.
 - Edit Book page (`/edit/:id`): Displays a form to edit an existing book.
@@ -14,16 +17,20 @@ This will improve user experience by enabling bookmarkable URLs and back/forward
 ## Implementation Plan
 
 ### 1. Install Dependency
+
 Install `react-router-dom` via npm in the client directory:
+
 ```bash
 cd Client/Book-management
 npm install react-router-dom
 ```
 
 ### 2. Update App.jsx
+
 Replace the current single-view structure with a router that defines routes for the different views.
 
 Changes:
+
 - Import necessary components from `react-router-dom` (`BrowserRouter`, `Routes`, `Route`, `Link`, `useNavigate`).
 - Create a `Home` component that contains the current main content (Header, BookList, Stats) but without the modal.
 - Create an `AddBookPage` component that displays a form for adding a book (reusing logic from `BookModal` but as a page).
@@ -35,6 +42,7 @@ Changes:
 ### 3. Component Changes
 
 #### App.jsx
+
 - Wrap the app in `BrowserRouter`.
 - Define routes:
   - `<Route path="/" element={<Home />} />`
@@ -44,6 +52,7 @@ Changes:
 - Keep the `books` state and related functions (`handleDeleteBook`, `handleToggleFavorite`, etc.) but move them to the `Home` component or pass them down as needed.
 
 #### Home.jsx (new component)
+
 - Contains:
   - Header (with links to Home and Add Book)
   - BookList (modified to use navigation for edit)
@@ -51,6 +60,7 @@ Changes:
   - A floating action button or header button to navigate to `/add` for adding a new book.
 
 #### AddBookPage.jsx (new component)
+
 - Contains:
   - Header (with a back link to Home)
   - A form identical to the current `BookModal` content (form fields, validation, submit handler).
@@ -58,22 +68,26 @@ Changes:
   - Cancel button to navigate back to home.
 
 #### EditBookPage.jsx (new component)
+
 - Similar to `AddBookPage` but:
   - Fetches the book data by `id` from the URL parameter using `useParams` and `useEffect`.
   - Pre-populates the form with the book's data.
   - On submit, updates the book and navigates back to home.
 
 #### Header.jsx (updated)
+
 - Add navigation links:
   - Link to "/" (Home)
   - Link to "/add" (Add Book)
 - Keep the theme toggle and other existing functionality.
 
 #### BookList.jsx and BookCard.jsx (updated)
+
 - In `BookCard`, replace the edit button's `onEdit` handler (which opened the modal) with a navigation call to `/edit/${book.id}` using `useNavigate`.
 - Remove the `onEdit` prop from `BookList` and `BookCard` if no longer needed for modal.
 
 ### 4. State Management
+
 - The `books` state and related functions (add, delete, toggle favorite) will be maintained in the `Home` component (or lifted to a context if we want to share across pages, but for simplicity we can keep in `Home` and pass via props or use a custom hook).
 - For the edit page, we will need to fetch the book by ID from the `books` state. We can pass the `books` array and the update function as props to `EditBookPage`, or use a custom hook to access the state.
 
@@ -91,13 +105,13 @@ But note: the `Home` component also needs the `books` state and the handlers for
 We can structure it as:
 
 App.jsx:
-  state: books
-  handlers: handleAddBook, handleUpdateBook, handleDeleteBook, handleToggleFavorite
+state: books
+handlers: handleAddBook, handleUpdateBook, handleDeleteBook, handleToggleFavorite
 
-  Then:
-    <Home books={books} onDeleteBook={handleDeleteBook} onToggleFavorite={handleToggleFavorite} onAddBook={handleAddBook} />
-    <AddBookPage onAddBook={handleAddBook} />
-    <EditBookPage books={books} onUpdateBook={handleUpdateBook} onDeleteBook={handleDeleteBook} />
+Then:
+<Home books={books} onDeleteBook={handleDeleteBook} onToggleFavorite={handleToggleFavorite} onAddBook={handleAddBook} />
+<AddBookPage onAddBook={handleAddBook} />
+<EditBookPage books={books} onUpdateBook={handleUpdateBook} onDeleteBook={handleDeleteBook} />
 
 But wait, the `handleSaveBook` in the original App handled both add and update. We can split it into two functions: `handleAddBook` and `handleUpdateBook`.
 
@@ -117,7 +131,7 @@ But then we need to fetch the book by id in `EditBookPage`. We can do that by ha
 
 So:
 
-  <EditBookPage 
+<EditBookPage 
       books={books}
       onSave={handleSaveBook}
   />
@@ -127,9 +141,10 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
 ### 5. Detailed Changes
 
 #### File: Client/Book-management/src/App.jsx
+
 - Import:
   ```javascript
-  import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+  import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
   ```
 - Remove:
   - `isModalOpen`, `editingBook`, `setIsModalOpen`, `setEditingBook`
@@ -148,17 +163,22 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
     <div className="min-h-screen pb-16 transition-colors duration-200">
       {/* Routes */}
       <Routes>
-        <Route path="/" element={<Home 
-                                  books={books} 
-                                  onDeleteBook={handleDeleteBook} 
-                                  onToggleFavorite={handleToggleFavorite} 
-                                  onSave={handleSaveBook} 
-                                  /> } />
+        <Route
+          path="/"
+          element={
+            <Home
+              books={books}
+              onDeleteBook={handleDeleteBook}
+              onToggleFavorite={handleToggleFavorite}
+              onSave={handleSaveBook}
+            />
+          }
+        />
         <Route path="/add" element={<AddBookPage onSave={handleSaveBook} />} />
-        <Route path="/edit/:id" element={<EditBookPage 
-                                          books={books} 
-                                          onSave={handleSaveBook} 
-                                          />} />
+        <Route
+          path="/edit/:id"
+          element={<EditBookPage books={books} onSave={handleSaveBook} />}
+        />
         {/* Redirect unknown routes to home */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
@@ -167,6 +187,7 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
   ```
 
 #### File: Client/Book-management/src/components/Home.jsx (new)
+
 - Create this file.
 - Props: `books`, `onDeleteBook`, `onToggleFavorite`, `onSave`
 - State: same as before for search, genre, sort, view mode, toasts, etc.
@@ -178,6 +199,7 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
   - A floating button or a button in the header to go to "/add" for adding a new book.
 
 #### File: Client/Book-management/src/components/AddBookPage.jsx (new)
+
 - Create this file.
 - Props: `onSave` (function to save the book)
 - State: form data (bookName, bookAuthor, etc.), errors (same as in BookModal)
@@ -189,6 +211,7 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
   - Form (same as BookModal content)
 
 #### File: Client/Book-management/src/components/EditBookPage.jsx (new)
+
 - Create this file.
 - Props: `books` (array), `onSave` (function to save the book)
 - Use `useParams` to get the `id` from the URL.
@@ -201,6 +224,7 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
   - Form (same as BookModal content, pre-filled with book data)
 
 #### File: Client/Book-management/src/components/Header.jsx (updated)
+
 - Import: `{ NavLink } from 'react-router-dom'`
 - Change the existing links to use `NavLink` for active styling.
 - Add a link to "/add" for adding a book.
@@ -211,15 +235,14 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
   We'll add a prop `showAddButton` (default true) and set it to false in the add and edit pages.
 
   In Header:
-    {showAddButton && (
-      <button
-        onClick={onOpenAddModal}   // but wait, we are removing the modal
-        className="nb-btn nb-btn-yellow"
-      >
-        <Plus className="w-5 h-5 stroke-[3]" />
-        <span>ADD NEW BOOK</span>
-      </button>
-    )}
+  {showAddButton && (
+  <button
+  onClick={onOpenAddModal} // but wait, we are removing the modal
+  className="nb-btn nb-btn-yellow" >
+  <Plus className="w-5 h-5 stroke-[3]" />
+  <span>ADD NEW BOOK</span>
+  </button>
+  )}
 
   But now we are removing the modal, so we cannot use `onOpenAddModal`. Instead, we should use `navigate` to go to "/add". So we need to pass a `navigate` function or use `useNavigate` inside Header.
 
@@ -232,7 +255,7 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
   In Header, we'll add a prop `onAddClick` (a function) and call it when the add button is clicked.
 
   Then in Home.jsx, we pass:
-    onAddClick={() => navigate('/add')}
+  onAddClick={() => navigate('/add')}
 
   And in AddBookPage and EditBookPage, we don't show the add button (so we pass `showAddButton={false}` or simply not pass the onAddClick).
 
@@ -243,10 +266,10 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
   Let's redesign Header to be more flexible:
 
   Props:
-    - `showAddButton` (boolean, default true): if true, shows the ADD NEW BOOK button.
-    - `showBackButton` (boolean, default false): if true, shows a back button ( goes to previous page or home? We'll go back to home for simplicity).
-    - `onAddClick` (function): called when add button is clicked.
-    - `onBackClick` (function): called when back button is clicked.
+  - `showAddButton` (boolean, default true): if true, shows the ADD NEW BOOK button.
+  - `showBackButton` (boolean, default false): if true, shows a back button ( goes to previous page or home? We'll go back to home for simplicity).
+  - `onAddClick` (function): called when add button is clicked.
+  - `onBackClick` (function): called when back button is clicked.
 
   Then in Home.jsx:
     <Header 
@@ -267,8 +290,8 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
   But note: the Header currently also has the theme toggle and the book count/total value. We need to pass `bookCount` and `totalValue` to Header only in the home page? Because in add/edit pages, we don't have that context.
 
   We can either:
-    - Not show the book count and total value in the header on add/edit pages.
-    - Or compute them from the books prop (if we pass books to header).
+  - Not show the book count and total value in the header on add/edit pages.
+  - Or compute them from the books prop (if we pass books to header).
 
   Let's change Header to accept `bookCount` and `totalValue` as props and only display them if provided.
 
@@ -279,60 +302,68 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
   Alternatively, we can compute the total value in the header if we pass the books array. But for simplicity, let's just pass the numbers.
 
   We'll change Header to:
-    - If `bookCount` and `totalValue` are provided, show the stats div.
-    - Otherwise, don't show it.
+  - If `bookCount` and `totalValue` are provided, show the stats div.
+  - Otherwise, don't show it.
 
   And the same for the add/back buttons.
 
 #### File: Client/Book-management/src/components/BookList.jsx
+
 - Remove the `onEdit` prop and instead, in BookCard, use `useNavigate` to navigate to `/edit/${book.id}` when the edit button is clicked.
 - Remove the `onEdit` prop from BookList and pass down to BookCard? Actually, we can remove it entirely and handle the edit navigation inside BookCard.
 
 #### File: Client/Book-management/src/components/BookCard.jsx
+
 - Import: `{ useNavigate } from 'react-router-dom'`
 - Inside the edit button's onClick, replace the call to `onEdit(book)` with:
-    const navigate = useNavigate();
-    navigate(`/edit/${book.id}`);
+  const navigate = useNavigate();
+  navigate(`/edit/${book.id}`);
 
   And remove the `onEdit` prop from the component's destructuring and props.
 
 ### 6. Validation and State
+
 - We must ensure that the `handleSaveBook` function in App.jsx (or wherever we keep it) works for both adding and editing.
   Currently, it does:
-    ```javascript
-    const handleSaveBook = (bookData) => {
-      const targetId = bookData._id || bookData.id;
-      if (editingBook) {
-        // update
-      } else {
-        // add
-      }
-    };
-    ```
+
+  ```javascript
+  const handleSaveBook = (bookData) => {
+    const targetId = bookData._id || bookData.id;
+    if (editingBook) {
+      // update
+    } else {
+      // add
+    }
+  };
+  ```
+
   We are removing the `editingBook` state from App.jsx. So we need to change the logic in `handleSaveBook` to determine if we are updating or adding based on whether `bookData` has an `_id` or `id` that matches an existing book.
 
   Alternatively, we can pass a flag from the page (add vs edit) but let's keep it simple in the function.
 
   We can change `handleSaveBook` to:
-    ```javascript
-    const handleSaveBook = (bookData) => {
-      // Check if bookData has an id that exists in books (and is not a new id like Date.now())
-      const existingBookIndex = books.findIndex(b => (b._id || b.id) === (bookData._id || bookData.id));
-      if (existingBookIndex >= 0) {
-        // update
-        setBooks(prev =>
-          prev.map((b, index) =>
-            index === existingBookIndex ? { ...b, ...bookData } : b
-          )
-        );
-        addToast(`Updated details for "${bookData.bookName}"`, 'success');
-      } else {
-        // add
-        setBooks(prev => [{ ...bookData, id: Date.now() }, ...prev]);
-        addToast(`Added "${bookData.bookName}" to collection`, 'success');
-      }
-    };
-    ```
+
+  ```javascript
+  const handleSaveBook = (bookData) => {
+    // Check if bookData has an id that exists in books (and is not a new id like Date.now())
+    const existingBookIndex = books.findIndex(
+      (b) => (b._id || b.id) === (bookData._id || bookData.id),
+    );
+    if (existingBookIndex >= 0) {
+      // update
+      setBooks((prev) =>
+        prev.map((b, index) =>
+          index === existingBookIndex ? { ...b, ...bookData } : b,
+        ),
+      );
+      addToast(`Updated details for "${bookData.bookName}"`, "success");
+    } else {
+      // add
+      setBooks((prev) => [{ ...bookData, id: Date.now() }, ...prev]);
+      addToast(`Added "${bookData.bookName}" to collection`, "success");
+    }
+  };
+  ```
 
   But note: we are removing the `editingBook` state, so we don't have that flag anymore.
 
@@ -343,11 +374,12 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
   We'll move the `handleSaveBook` function to `App.jsx` and keep it there, then pass it down as a prop.
 
 ### 7. Toast Notifications
+
 - The `toasts` state and the `addToast` and `handleDismissToast` functions are currently in App.jsx.
 - We need to move them to a place where they can be accessed by all pages (Home, AddBookPage, EditBookPage).
 - We can either:
-    a) Keep them in App.jsx and pass down the `addToast` function as a prop to the pages and components that need it.
-    b) Create a context for toasts.
+  a) Keep them in App.jsx and pass down the `addToast` function as a prop to the pages and components that need it.
+  b) Create a context for toasts.
 
   Given the scope, let's keep it simple and pass the `addToast` function as a prop.
 
@@ -358,42 +390,47 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
   We'll adjust:
 
   In App.jsx:
-    - Keep the `toasts` state and the `addToast`, `handleDismissToast` functions.
-    - Pass `addToast` to Home, AddBookPage, EditBookPage.
+  - Keep the `toasts` state and the `addToast`, `handleDismissToast` functions.
+  - Pass `addToast` to Home, AddBookPage, EditBookPage.
 
-  In Home.jsx, we already have the toast state and functions? Actually, we moved the home-related state to Home.jsx, but the toast state is still in App.jsx. We can either:
-      - Move the toast state to App.jsx and pass it down, or
-      - Keep the toast state in App.jsx and use it in the toast container in App.jsx, but then the pages need to trigger toasts.
+  In Home.jsx, we already have the toast state and functions? Actually, we moved the home-related state to Home.jsx, but the toast state is still in App.jsx. We can either: - Move the toast state to App.jsx and pass it down, or - Keep the toast state in App.jsx and use it in the toast container in App.jsx, but then the pages need to trigger toasts.
 
   Let's keep the toast state and the toast container in App.jsx (so the toasts appear at the top level) and pass the `addToast` function down to the pages and components that need to show a toast.
 
   Then, in App.jsx, we keep:
-    ```javascript
-    const [toasts, setToasts] = useState([]);
-    const addToast = useCallback((message, type = 'success') => { ... }, []);
-    const handleDismissToast = useCallback((id) => { ... }, []);
-    ```
+
+  ```javascript
+  const [toasts, setToasts] = useState([]);
+  const addToast = useCallback((message, type = 'success') => { ... }, []);
+  const handleDismissToast = useCallback((id) => { ... }, []);
+  ```
+
   And we pass `addToast` as a prop to the pages.
 
   The toast container (the div that maps over toasts) remains in App.jsx.
 
 ### 8. BookList and Stats
+
 - The `BookList` and `Stats` components are only used in the Home page, so they can remain as is, but we need to pass the necessary props from Home.jsx.
 
 ### 9. BookModal
+
 - Since we are replacing the modal with pages, we can remove the `BookModal.jsx` file or keep it for reference? We'll remove it because we are not using it anymore.
 
 ### 10. CSS and styling
+
 - We are reusing the existing components (Header, BookList, etc.) so the styling should remain consistent.
 
 ### Summary of File Changes
 
 **New Files:**
+
 - `src/components/Home.jsx`
 - `src/components/AddBookPage.jsx`
 - `src/components/EditBookPage.jsx`
 
 **Modified Files:**
+
 - `src/App.jsx` - add router, remove modal state, adjust props and state handling.
 - `src/components/Header.jsx` - add props for conditional rendering of buttons and stats, use `useNavigate` for buttons.
 - `src/components/BookList.jsx` - remove `onEdit` prop.
@@ -401,15 +438,17 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
 - Remove `src/components/BookModal.jsx` (since we are using pages instead).
 
 ### 11. Validation and Testing
+
 - After implementing, we should test:
-    - Navigating between home, add, and edit pages via links and directly via URL.
-    - Adding a new book from the add page and seeing it appear in the home list.
-    - Editing a book from the edit page and seeing the changes in the home list.
-    - Deleting a book from the home page.
-    - Toggling favorite status.
-    - Ensuring that the header shows the correct buttons and stats on each page.
+  - Navigating between home, add, and edit pages via links and directly via URL.
+  - Adding a new book from the add page and seeing it appear in the home list.
+  - Editing a book from the edit page and seeing the changes in the home list.
+  - Deleting a book from the home page.
+  - Toggling favorite status.
+  - Ensuring that the header shows the correct buttons and stats on each page.
 
 ### 12. Notes
+
 - We are not implementing a detailed book view page (like `/books/:id`) because the requirement was for basic routing and the current app doesn't have a detail view.
 - We are keeping the existing state management in `App.jsx` for simplicity. For a larger app, we might consider using a state management library or React Context.
 
@@ -425,6 +464,7 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
 8. Delete: `src/components/BookModal.jsx`
 
 ## Verification Steps
+
 1. Run the client: `npm run dev` in the Client/Book-management directory.
 2. Check that the home page loads at `/`.
 3. Click the "ADD NEW BOOK" button in the header (or navigate to `/add`) and verify the add book form appears.
@@ -437,6 +477,7 @@ And inside `EditBookPage`, we use `useParams` to get the `id`, then find the boo
 10. Test the browser's back and forward buttons.
 
 ## Risks and Considerations
+
 - State management: We are keeping the book state in `App.jsx` and passing it down. This is acceptable for a small app but may become cumbersome as the app grows.
 - The edit page relies on the `books` prop being up-to-date. Since we are passing the `books` state from `App.jsx` and updating it via `setBooks`, the edit page will re-render with the updated book data when the books change.
 - We are not handling the case where a book is deleted while on its edit page. We might want to redirect to home if the book is no longer found. We can add a check in `EditBookPage`: if the book is not found, navigate to home and show a toast.

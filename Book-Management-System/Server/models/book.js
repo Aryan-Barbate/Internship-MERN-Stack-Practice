@@ -19,7 +19,7 @@ const schema = new mongoose.Schema({
   },
   genre: {
     type: String,
-    default: 'General',
+    default: "General",
   },
   rating: {
     type: Number,
@@ -27,7 +27,7 @@ const schema = new mongoose.Schema({
   },
   description: {
     type: String,
-    default: '',
+    default: "",
   },
   isFavorite: {
     type: Boolean,
