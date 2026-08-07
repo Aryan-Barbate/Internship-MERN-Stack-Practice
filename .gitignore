@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-# Editor directories and files
+# Editor & AI directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -22,10 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.claude/
+*.tldr
 
 # Book Management System specific files
 Book-Management-System/CLAUDE.md
 Book-Management-System/DESIGN-wise.md
-task.tldr
-Book-Management-System\axios.tldr
-CLAUDE.md
+CLAUDE.md
