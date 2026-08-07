@@ -249,23 +249,25 @@ The **Book Management System** is the flagship capstone project built during Day
 
 ### 📂 Directory & Component Structure
 
-| Directory / File Path | Layer / Component | Purpose & Details |
-| :--- | :--- | :--- |
-| `Book-Management-System/` | Project Root | Root directory for the consolidated full-stack capstone application |
-| ├── `Server/` | Backend API | Express.js server application backing the project |
-| │   ├── `controllers/bookController.js` | Business Logic | Controller methods handling GET, POST, PUT, DELETE operations |
-| │   ├── `models/bookModel.js` | Schema Layer | Mongoose schema definition for Book documents |
-| │   ├── `routes/bookRouter.js` | Routing | Express Router defining endpoints for `/books` |
-| │   ├── `database.js` | Database Config | Mongoose connection handler to MongoDB Atlas cluster |
-| │   ├── `index.js` | Server Entry Point | Server bootstrap, CORS middleware setup, JSON body parser |
-| │   ├── `package.json` | Dependencies | Server dependencies (`express`, `mongoose`, `cors`, `dotenv`) |
-| │   └── `.env` | Environment Config | Server `PORT` and `MONGODB_URI` database connection string |
-| └── `Client/Book-management/` | Frontend SPA | Modern React 19 + Vite + Tailwind CSS application |
-|     ├── `src/App.jsx` | Dynamic UI | Main component rendering Book list, Add/Edit forms, Delete triggers |
-|     ├── `src/main.jsx` | React Root | DOM mounting point for React application |
-|     ├── `src/index.css` | Styling | Global styles and Tailwind CSS directives |
-|     ├── `package.json` | Dependencies | Client npm packages (`react`, `axios`, `tailwindcss`) |
-|     └── `vite.config.js` | Build Config | Vite development server and production bundler settings |
+- 📁 **`Book-Management-System/`** — Root directory for the consolidated full-stack capstone application
+  - 📂 **`Server/`** — Express.js server application backing the project
+    - 📂 **`controllers/`**
+      - 📄 `bookController.js` — Controller methods handling GET, POST, PUT, DELETE operations
+    - 📂 **`models/`**
+      - 📄 `bookModel.js` — Mongoose schema definition for Book documents
+    - 📂 **`routes/`**
+      - 📄 `bookRouter.js` — Express Router defining endpoints for `/books`
+    - 📄 `database.js` — Mongoose connection handler to MongoDB Atlas cluster
+    - 📄 `index.js` — Server bootstrap, CORS middleware setup, JSON body parser
+    - 📄 `package.json` — Server dependencies (`express`, `mongoose`, `cors`, `dotenv`)
+    - 📄 `.env` — Server `PORT` and `MONGODB_URI` database connection string
+  - 📂 **`Client/Book-management/`** — Modern React 19 + Vite + Tailwind CSS application
+    - 📂 **`src/`**
+      - 📄 `App.jsx` — Main component rendering Book list, Add/Edit forms, Delete triggers
+      - 📄 `main.jsx` — DOM mounting point for React application
+      - 📄 `index.css` — Global styles and Tailwind CSS directives
+    - 📄 `package.json` — Client npm packages (`react`, `axios`, `tailwindcss`)
+    - 📄 `vite.config.js` — Vite development server and production bundler settings
 
 ### Database Entity Schema (Book Document)
 
